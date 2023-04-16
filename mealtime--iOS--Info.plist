@@ -15,5 +15,7 @@
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<true/>
 	</dict>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>이 앱은 광고로 유지돼요. 맞춤형 광고 표시를 위한 데이터 수집이며 광고 표시 외에 아무 목적으로도 사용되지 않아요! 💸</string>
 </dict>
 </plist>

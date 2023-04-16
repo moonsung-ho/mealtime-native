@@ -31,8 +31,6 @@
 		CBD1240829EBDC0C009D91D2 /* AdBannerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1240629EBDC0C009D91D2 /* AdBannerUIView.swift */; };
 		CBD1240A29EBE541009D91D2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBD1240929EBE540009D91D2 /* Launch Screen.storyboard */; };
 		CBD1240B29EBE541009D91D2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBD1240929EBE540009D91D2 /* Launch Screen.storyboard */; };
-		CBD1240D29EBE747009D91D2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CBD1240C29EBE747009D91D2 /* Icon.png */; };
-		CBD1240E29EBE747009D91D2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CBD1240C29EBE747009D91D2 /* Icon.png */; };
 		CBDDBAFB29E26B6500C6E0EA /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDDBAFA29E26B6400C6E0EA /* MoreView.swift */; };
 		CBDDBAFC29E26B6500C6E0EA /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDDBAFA29E26B6400C6E0EA /* MoreView.swift */; };
 		CBDDBAFE29E26C9800C6E0EA /* SchoolSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDDBAFD29E26C9800C6E0EA /* SchoolSettingsView.swift */; };
@@ -81,7 +79,6 @@
 		CBD123F929EBD59F009D91D2 /* mealtime--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "mealtime--iOS--Info.plist"; sourceTree = "<group>"; };
 		CBD1240629EBDC0C009D91D2 /* AdBannerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBannerUIView.swift; sourceTree = "<group>"; };
 		CBD1240929EBE540009D91D2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		CBD1240C29EBE747009D91D2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../../../../Downloads/AppIcons/Icon.png; sourceTree = "<group>"; };
 		CBDDBAFA29E26B6400C6E0EA /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		CBDDBAFD29E26C9800C6E0EA /* SchoolSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSettingsView.swift; sourceTree = "<group>"; };
 		D9D1F95EB078103D20A52B63 /* Pods-mealtime (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mealtime (macOS).debug.xcconfig"; path = "Target Support Files/Pods-mealtime (macOS)/Pods-mealtime (macOS).debug.xcconfig"; sourceTree = "<group>"; };
@@ -153,7 +150,6 @@
 				CBCB704428AF5DAA003DF9D6 /* mealtimeApp.swift */,
 				CBD1240929EBE540009D91D2 /* Launch Screen.storyboard */,
 				CBCB704528AF5DAA003DF9D6 /* MealView.swift */,
-				CBD1240C29EBE747009D91D2 /* Icon.png */,
 				CBD1240629EBDC0C009D91D2 /* AdBannerUIView.swift */,
 				CBD123D629EABFCB009D91D2 /* TimeTableView.swift */,
 				CBDDBAFA29E26B6400C6E0EA /* MoreView.swift */,
@@ -353,7 +349,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBD1240A29EBE541009D91D2 /* Launch Screen.storyboard in Resources */,
-				CBD1240D29EBE747009D91D2 /* Icon.png in Resources */,
 				CBCB707028AF5DB0003DF9D6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,7 +358,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBD1240B29EBE541009D91D2 /* Launch Screen.storyboard in Resources */,
-				CBD1240E29EBE747009D91D2 /* Icon.png in Resources */,
 				CBCB707128AF5DB0003DF9D6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
