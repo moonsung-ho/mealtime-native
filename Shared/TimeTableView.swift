@@ -1,13 +1,12 @@
 import SwiftUI
 import SwiftyJSON
-import Foundation
 
 struct TimeTableView: View {
-    @State var meals: [String] = []
-    @State var meal: String = ""
+    @State var timeTable: [String] = []
     @State private var selectedDate = Date()
+    @State var schoolForm = "els"
     
-    var body: some View {
+    var body:some View{
         VStack{
             DatePicker(
                             "날짜 선택",
@@ -18,7 +17,7 @@ struct TimeTableView: View {
                         .onChange(of: selectedDate, perform: { (value) in
                             sendGetRequest()
                         }).padding(10)
-            List(meals, id: \.self) { meal in
+            List(timeTable, id: \.self) { meal in
                 if meal.contains("!"){Text(meal.filter { !"!".contains($0) }).foregroundColor(Color.red)}
                 else {
                     Text(meal)
@@ -27,6 +26,7 @@ struct TimeTableView: View {
             }.onAppear {
                 sendGetRequest()
             }.listStyle(.inset)
+            AdBannerView()
         }
     }
     
@@ -37,12 +37,26 @@ struct TimeTableView: View {
         }
     
     func sendGetRequest() {
-        meals = ["로딩중이에요."]
+        timeTable = ["로딩중이에요."]
         let schoolCode: String? = (UserDefaults.standard.object(forKey: "schoolCode") as? String)
         let officeCode: String? = UserDefaults.standard.object(forKey: "officeCode") as? String
-        // 1. URL 생성
-        let url = URL(string: "https://open.neis.go.kr/hub/elsTimetable?Type=json&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=\(officeCode ?? "")&SD_SCHUL_CODE=\(schoolCode ?? "")&MLSV_YMD=\(formattedDate)")!
+        let classN: String? = UserDefaults.standard.object(forKey: "class") as? String
+        let grade: String? = UserDefaults.standard.object(forKey: "grade") as? String
+        if schoolCode != nil {
+            if ((UserDefaults.standard.object(forKey: "schoolName") as? String)!.contains("초등학교")) {
+                schoolForm = "els"
+            }
+            else if ((UserDefaults.standard.object(forKey: "schoolName") as? String)!.contains("중학교")) {
+                schoolForm = "mis"
+            }
+            else if ((UserDefaults.standard.object(forKey: "schoolName") as? String)!.contains("고등학교")) {
+                schoolForm = "his"
+            }
+        }
         
+        // 1. URL 생성
+        let url = URL(string: "https://mealtimeapi.sungho-moon.workers.dev/hub/\(schoolForm)Timetable?type=json&ATPT_OFCDC_SC_CODE=\(officeCode ?? "")&SD_SCHUL_CODE=\(schoolCode ?? "")&ALL_TI_YMD=\(formattedDate)&GRADE=\(grade ?? "")&CLASS_NM=\(classN ?? "")")!
+        print(url)
         // 2. URL Request 생성
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -70,17 +84,33 @@ struct TimeTableView: View {
             }
 
             // 6. 데이터 처리
-            let mealJSON = JSON(data)
-            guard var meal = mealJSON["mealServiceDietInfo"][1]["row"][0]["DDISH_NM"].rawValue as? String else {
-                if schoolCode == nil {
-                    meals = ["학교를 등록해주세요."]
-                } else{
-                    meals = ["급식이 등록되지 않았어요."]
-                }
-                return
+            let timeTableJSON = JSON(data)
+//            guard var time = timeTableJSON["misTimetable"][1]["row"][0]["DDISH_NM"].rawValue as? String else {
+//                if schoolCode == nil {
+//                    timeTable = ["학교를 등록해주세요."]
+//                } else{
+//                    timeTable = ["급식이 등록되지 않았어요."]
+//                }
+//                return
+//            }
+            //meal = meal.filter { !"0123456789. ".contains($0) }
+            //meal = meal.filter { !"()".contains($0) }
+            print(timeTableJSON["\(schoolForm)Timetable"][0]["head"][0]["list_total_count"])
+            timeTable.remove(at: 0)
+            
+            for (index, lesson) in timeTableJSON["\(schoolForm)Timetable"][1]["row"].enumerated() {
+                print(lesson.1["ITRT_CNTNT"])
+                timeTable.append("\(lesson.1["PERIO"].rawValue as! String): \(lesson.1["ITRT_CNTNT"].rawValue as! String)")
             }
-            print(meal)
-            meals = meal.components(separatedBy: "<br/>")
+            if timeTable.count == 0 {
+                if schoolCode == nil{
+                    timeTable.append("학교를 등록해주세요.")
+                } else if grade == nil {
+                    timeTable.append("학년/반을 등록해주세요.")
+                } else {
+                    timeTable.append("시간표가 등록되지 않았어요.")
+                }
+            }
         }
         
         // 7. 요청 실행

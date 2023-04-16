@@ -24,6 +24,7 @@ struct SchoolSettingsView: View {
     @State var storedOfficeCode:String? = (UserDefaults.standard.object(forKey: "officeCode") as? String)
     @State var alertIsPresented: Bool = false
     @State var searchString: String = ""
+    @State var isNextPageActive = false
     
     var body: some View {
         //        TextField("학교 코드", text: $schoolCode)
@@ -42,11 +43,18 @@ struct SchoolSettingsView: View {
             sendGetRequest(stringToSearch: searchString)
         }
         List(schools, id:\.self){ school in
-            Button("\(school.name)\n\(school.address)") {
-                UserDefaults.standard.set(school.schoolCode, forKey: "schoolCode")
-                UserDefaults.standard.set(school.officeCode, forKey: "officeCode")
-                alertIsPresented.toggle()
-                print(UserDefaults.standard.object(forKey: "schoolCode") as? String ?? "없음")
+            HStack{
+                Button("\(school.name)\n\(school.address)") {
+                    UserDefaults.standard.set(school.schoolCode, forKey: "schoolCode")
+                    UserDefaults.standard.set(school.officeCode, forKey: "officeCode")
+                    UserDefaults.standard.set(school.name, forKey: "schoolName")
+                    alertIsPresented.toggle()
+                    print(UserDefaults.standard.object(forKey: "schoolCode") as? String ?? "없음")
+                    self.isNextPageActive = true
+                }
+                NavigationLink(destination: GradeClassView(), isActive: $isNextPageActive) {
+                    EmptyView()
+                }
             }
         }
     .listStyle(.inset)

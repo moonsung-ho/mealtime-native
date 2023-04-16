@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftyJSON
 import Foundation
+import AppTrackingTransparency
 
 struct MealView: View {
     @State var meals: [String] = []
@@ -27,6 +28,16 @@ struct MealView: View {
             }.onAppear {
                 sendGetRequest()
             }.listStyle(.inset)
+            AdBannerView()
+        }.onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                if status == .authorized {
+                    print("인증됨")
+                }
+                else {
+                    print("노노")
+                }
+            })
         }
     }
     
@@ -88,7 +99,7 @@ struct MealView: View {
                 if meal.split(separator: " ").count == 2 {
                     var separatedMeal = meal.split(separator: " ")[1].filter { !"()".contains($0) }
                     var spmeal = separatedMeal.split(separator: ".")
-                    let allergyAlert = (allergy!)
+                    let allergyAlert = (allergy ?? "")
                     meals[index] = meal.filter { !"0123456789.()".contains($0) }
                     for allergies in spmeal{
                         if allergies == allergyAlert{

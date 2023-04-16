@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		167477BD567F6602463DC73A /* Pods_mealtime__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8859D7D4135E38447547AF4 /* Pods_mealtime__macOS_.framework */; };
 		8D7B5E56725D8429DB39C774 /* Pods_mealtime__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987E9CAC0DF980BB92316EA2 /* Pods_mealtime__iOS_.framework */; };
-		CB8A005E28B9D8FB00EDB9F8 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A005D28B9D8FB00EDB9F8 /* Meal.swift */; };
-		CB8A005F28B9D8FB00EDB9F8 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A005D28B9D8FB00EDB9F8 /* Meal.swift */; };
 		CBB3509E29EA9A4D006AB8A0 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB3509D29EA9A4D006AB8A0 /* InfoView.swift */; };
 		CBB3509F29EA9A4D006AB8A0 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB3509D29EA9A4D006AB8A0 /* InfoView.swift */; };
 		CBCB705D28AF5DB0003DF9D6 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB705C28AF5DB0003DF9D6 /* Tests_iOS.swift */; };
@@ -27,6 +25,14 @@
 		CBD123D529EA9EB7009D91D2 /* AllergySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD123D329EA9EB7009D91D2 /* AllergySettingsView.swift */; };
 		CBD123D729EABFCB009D91D2 /* TimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD123D629EABFCB009D91D2 /* TimeTableView.swift */; };
 		CBD123D829EABFCB009D91D2 /* TimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD123D629EABFCB009D91D2 /* TimeTableView.swift */; };
+		CBD123DD29EAE026009D91D2 /* GradeClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD123DC29EAE026009D91D2 /* GradeClassView.swift */; };
+		CBD123DE29EAE026009D91D2 /* GradeClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD123DC29EAE026009D91D2 /* GradeClassView.swift */; };
+		CBD1240729EBDC0C009D91D2 /* AdBannerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1240629EBDC0C009D91D2 /* AdBannerUIView.swift */; };
+		CBD1240829EBDC0C009D91D2 /* AdBannerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1240629EBDC0C009D91D2 /* AdBannerUIView.swift */; };
+		CBD1240A29EBE541009D91D2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBD1240929EBE540009D91D2 /* Launch Screen.storyboard */; };
+		CBD1240B29EBE541009D91D2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBD1240929EBE540009D91D2 /* Launch Screen.storyboard */; };
+		CBD1240D29EBE747009D91D2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CBD1240C29EBE747009D91D2 /* Icon.png */; };
+		CBD1240E29EBE747009D91D2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CBD1240C29EBE747009D91D2 /* Icon.png */; };
 		CBDDBAFB29E26B6500C6E0EA /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDDBAFA29E26B6400C6E0EA /* MoreView.swift */; };
 		CBDDBAFC29E26B6500C6E0EA /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDDBAFA29E26B6400C6E0EA /* MoreView.swift */; };
 		CBDDBAFE29E26C9800C6E0EA /* SchoolSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDDBAFD29E26C9800C6E0EA /* SchoolSettingsView.swift */; };
@@ -54,7 +60,6 @@
 		854F8D47772DD72723F01C46 /* Pods-mealtime (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mealtime (iOS).debug.xcconfig"; path = "Target Support Files/Pods-mealtime (iOS)/Pods-mealtime (iOS).debug.xcconfig"; sourceTree = "<group>"; };
 		987E9CAC0DF980BB92316EA2 /* Pods_mealtime__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mealtime__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7E5FAE28B2152000817C61 /* Alamofire-5.6.2 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "Alamofire-5.6.2"; path = "../../../Downloads/Alamofire-5.6.2"; sourceTree = "<group>"; };
-		CB8A005D28B9D8FB00EDB9F8 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		CB9F740F903F7B9AF5B9CCFD /* Pods-mealtime (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mealtime (macOS).release.xcconfig"; path = "Target Support Files/Pods-mealtime (macOS)/Pods-mealtime (macOS).release.xcconfig"; sourceTree = "<group>"; };
 		CBB3509D29EA9A4D006AB8A0 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		CBCB704428AF5DAA003DF9D6 /* mealtimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mealtimeApp.swift; sourceTree = "<group>"; };
@@ -72,6 +77,11 @@
 		CBCB70D328B21236003DF9D6 /* Alamofire-5.6.2 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "Alamofire-5.6.2"; path = "../../../Downloads/Alamofire-5.6.2"; sourceTree = "<group>"; };
 		CBD123D329EA9EB7009D91D2 /* AllergySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergySettingsView.swift; sourceTree = "<group>"; };
 		CBD123D629EABFCB009D91D2 /* TimeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableView.swift; sourceTree = "<group>"; };
+		CBD123DC29EAE026009D91D2 /* GradeClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeClassView.swift; sourceTree = "<group>"; };
+		CBD123F929EBD59F009D91D2 /* mealtime--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "mealtime--iOS--Info.plist"; sourceTree = "<group>"; };
+		CBD1240629EBDC0C009D91D2 /* AdBannerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBannerUIView.swift; sourceTree = "<group>"; };
+		CBD1240929EBE540009D91D2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		CBD1240C29EBE747009D91D2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../../../../Downloads/AppIcons/Icon.png; sourceTree = "<group>"; };
 		CBDDBAFA29E26B6400C6E0EA /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		CBDDBAFD29E26C9800C6E0EA /* SchoolSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSettingsView.swift; sourceTree = "<group>"; };
 		D9D1F95EB078103D20A52B63 /* Pods-mealtime (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mealtime (macOS).debug.xcconfig"; path = "Target Support Files/Pods-mealtime (macOS)/Pods-mealtime (macOS).debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +135,7 @@
 		CBCB703E28AF5DAA003DF9D6 = {
 			isa = PBXGroup;
 			children = (
+				CBD123F929EBD59F009D91D2 /* mealtime--iOS--Info.plist */,
 				CBCB70D228B21236003DF9D6 /* Packages */,
 				CBCB704328AF5DAA003DF9D6 /* Shared */,
 				CBCB705228AF5DB0003DF9D6 /* macOS */,
@@ -140,12 +151,15 @@
 			isa = PBXGroup;
 			children = (
 				CBCB704428AF5DAA003DF9D6 /* mealtimeApp.swift */,
-				CB8A005D28B9D8FB00EDB9F8 /* Meal.swift */,
+				CBD1240929EBE540009D91D2 /* Launch Screen.storyboard */,
 				CBCB704528AF5DAA003DF9D6 /* MealView.swift */,
+				CBD1240C29EBE747009D91D2 /* Icon.png */,
+				CBD1240629EBDC0C009D91D2 /* AdBannerUIView.swift */,
 				CBD123D629EABFCB009D91D2 /* TimeTableView.swift */,
 				CBDDBAFA29E26B6400C6E0EA /* MoreView.swift */,
 				CBD123D329EA9EB7009D91D2 /* AllergySettingsView.swift */,
 				CBB3509D29EA9A4D006AB8A0 /* InfoView.swift */,
+				CBD123DC29EAE026009D91D2 /* GradeClassView.swift */,
 				CBDDBAFD29E26C9800C6E0EA /* SchoolSettingsView.swift */,
 				CBCB704628AF5DB0003DF9D6 /* Assets.xcassets */,
 			);
@@ -338,6 +352,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBD1240A29EBE541009D91D2 /* Launch Screen.storyboard in Resources */,
+				CBD1240D29EBE747009D91D2 /* Icon.png in Resources */,
 				CBCB707028AF5DB0003DF9D6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,6 +362,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBD1240B29EBE541009D91D2 /* Launch Screen.storyboard in Resources */,
+				CBD1240E29EBE747009D91D2 /* Icon.png in Resources */,
 				CBCB707128AF5DB0003DF9D6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,11 +470,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBD1240729EBDC0C009D91D2 /* AdBannerUIView.swift in Sources */,
 				CBD123D729EABFCB009D91D2 /* TimeTableView.swift in Sources */,
 				CBCB706E28AF5DB0003DF9D6 /* MealView.swift in Sources */,
 				CBD123D429EA9EB7009D91D2 /* AllergySettingsView.swift in Sources */,
+				CBD123DD29EAE026009D91D2 /* GradeClassView.swift in Sources */,
 				CBDDBAFE29E26C9800C6E0EA /* SchoolSettingsView.swift in Sources */,
-				CB8A005E28B9D8FB00EDB9F8 /* Meal.swift in Sources */,
 				CBCB706C28AF5DB0003DF9D6 /* mealtimeApp.swift in Sources */,
 				CBB3509E29EA9A4D006AB8A0 /* InfoView.swift in Sources */,
 				CBDDBAFB29E26B6500C6E0EA /* MoreView.swift in Sources */,
@@ -467,11 +486,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBD1240829EBDC0C009D91D2 /* AdBannerUIView.swift in Sources */,
 				CBD123D829EABFCB009D91D2 /* TimeTableView.swift in Sources */,
 				CBCB706F28AF5DB0003DF9D6 /* MealView.swift in Sources */,
 				CBD123D529EA9EB7009D91D2 /* AllergySettingsView.swift in Sources */,
+				CBD123DE29EAE026009D91D2 /* GradeClassView.swift in Sources */,
 				CBDDBAFF29E26C9800C6E0EA /* SchoolSettingsView.swift in Sources */,
-				CB8A005F28B9D8FB00EDB9F8 /* Meal.swift in Sources */,
 				CBCB706D28AF5DB0003DF9D6 /* mealtimeApp.swift in Sources */,
 				CBB3509F29EA9A4D006AB8A0 /* InfoView.swift in Sources */,
 				CBDDBAFC29E26B6500C6E0EA /* MoreView.swift in Sources */,
@@ -627,15 +647,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mealtime--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "급식시간";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -657,15 +681,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mealtime--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "급식시간";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

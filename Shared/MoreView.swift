@@ -23,7 +23,12 @@ struct MoreView: View {
                         AllergySettingsView()
                       }
                       .navigationBarTitle("더보기")
+                NavigationLink("학년/반 설정") {
+                        GradeClassView()
+                      }
+                      .navigationBarTitle("더보기")
             }
+            AdBannerView()
         }
     }
 }
