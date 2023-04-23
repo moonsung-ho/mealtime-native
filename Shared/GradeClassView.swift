@@ -79,7 +79,7 @@ struct GradeClassView: View {
         let officeCode:String? = (UserDefaults.standard.object(forKey: "officeCode") as? String)
         let schoolCode:String? = (UserDefaults.standard.object(forKey: "schoolCode") as? String)
         
-        let url = URL(string: "https://open.neis.go.kr/hub/classInfo?ATPT_OFCDC_SC_CODE=\( officeCode ?? "")&SD_SCHUL_CODE=\(schoolCode ?? "")&AY=\(String(year))&GRADE=\(String(selectedGrade ))&type=json")!
+        let url = URL(string: "https://mealtimeapi.sungho-moon.workers.dev/hub/classInfo?ATPT_OFCDC_SC_CODE=\( officeCode ?? "")&SD_SCHUL_CODE=\(schoolCode ?? "")&AY=\(String(year))&GRADE=\(String(selectedGrade ))&type=json")!
         
         // 2. URL Request 생성
         var request = URLRequest(url: url)

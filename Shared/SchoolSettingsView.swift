@@ -56,7 +56,7 @@ struct SchoolSettingsView: View {
 func sendGetRequest(stringToSearch: String) {
         schools = [School(name: "로딩중이에요.", address: "", schoolCode: "", officeCode: "")]
         // 1. URL 생성
-    let url = URL(string: "https://open.neis.go.kr/hub/schoolInfo?Type=json&pIndex=1&pSize=10000&SCHUL_NM=\(stringToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)")!
+    let url = URL(string: "https://mealtimeapi.sungho-moon.workers.dev/hub/schoolInfo?Type=json&pIndex=1&pSize=10000&SCHUL_NM=\(stringToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)")!
     
     
         
