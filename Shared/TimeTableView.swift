@@ -6,27 +6,38 @@ struct TimeTableView: View {
     @State private var selectedDate = Date()
     @State var schoolForm = "els"
     
-    var body:some View{
-        VStack{
-            DatePicker(
-                            "날짜 선택",
-                            selection: $selectedDate,
-                            displayedComponents: [.date]
-                        )
-            .datePickerStyle(.compact)
-                        .onChange(of: selectedDate, perform: { (value) in
-                            sendGetRequest()
-                        }).padding(10)
-            List(timeTable, id: \.self) { meal in
-                if meal.contains("!"){Text(meal.filter { !"!".contains($0) }).foregroundColor(Color.red)}
-                else {
-                    Text(meal)
+    var body: some View {
+        NavigationView {
+            VStack {
+                HStack {
+                    Button("\(Image(systemName: "chevron.backward"))"){
+                        selectedDate = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate)!
+                    }.buttonStyle(.bordered)
+                    DatePicker(
+                        "날짜 선택",
+                        selection: $selectedDate,
+                        displayedComponents: [.date]
+                    )
+                    .labelsHidden()
+                    .datePickerStyle(.compact)
+                    .onChange(of: selectedDate, perform: { (value) in
+                        sendGetRequest()
+                    }).padding(10)
+                    Button("\(Image(systemName: "chevron.forward"))"){
+                        selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate)!
+                    }.buttonStyle(.bordered)
                 }
-                
-            }.onAppear {
-                sendGetRequest()
-            }.listStyle(.inset)
-            AdBannerView()
+                List(timeTable, id: \.self) { meal in
+                    if meal.contains("!"){Text(meal.filter { !"!".contains($0) }).foregroundColor(Color.red)}
+                    else {
+                        Text(meal)
+                    }
+                    
+                }.onAppear {
+                    sendGetRequest()
+                }.listStyle(.inset)
+                AdBannerView()
+            }.navigationBarTitle("시간표")
         }
     }
     
@@ -55,8 +66,7 @@ struct TimeTableView: View {
         }
         
         // 1. URL 생성
-        let url = URL(string: "https://mealtimeapi.sungho-moon.workers.dev/hub/\(schoolForm)Timetable?type=json&ATPT_OFCDC_SC_CODE=\(officeCode ?? "")&SD_SCHUL_CODE=\(schoolCode ?? "")&ALL_TI_YMD=\(formattedDate)&GRADE=\(grade ?? "")&CLASS_NM=\(classN ?? "")")!
-        print(url)
+        let url = URL(string: "https://open.neis.go.kr/hub/\(schoolForm)Timetable?type=json&ATPT_OFCDC_SC_CODE=\(officeCode ?? "")&SD_SCHUL_CODE=\(schoolCode ?? "")&ALL_TI_YMD=\(formattedDate)&GRADE=\(grade ?? "")&CLASS_NM=\(classN ?? "")")!
         // 2. URL Request 생성
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -67,19 +77,19 @@ struct TimeTableView: View {
         // 4. URLSessionDataTask 생성
         let task = session.dataTask(with: request) { data, response, error in
             // 5. 응답 처리
-            if let error = error {
-                print("Error: \(error)")
+            if error != nil {
+                timeTable = ["에러가 발생했어요. 문제가 지속될 경우 개발자에게 문의하세요."]
                 return
             }
             
             guard let response = response as? HTTPURLResponse,
                   (200..<300).contains(response.statusCode) else {
-                print("Invalid response")
+                timeTable = ["인터넷 연결을 확인하세요."]
                 return
             }
             
             guard let data = data else {
-                print("No data")
+                timeTable = ["문제가 발생했어요."]
                 return
             }
 
@@ -95,11 +105,9 @@ struct TimeTableView: View {
 //            }
             //meal = meal.filter { !"0123456789. ".contains($0) }
             //meal = meal.filter { !"()".contains($0) }
-            print(timeTableJSON["\(schoolForm)Timetable"][0]["head"][0]["list_total_count"])
             timeTable.remove(at: 0)
             
-            for (index, lesson) in timeTableJSON["\(schoolForm)Timetable"][1]["row"].enumerated() {
-                print(lesson.1["ITRT_CNTNT"])
+            for (_, lesson) in timeTableJSON["\(schoolForm)Timetable"][1]["row"].enumerated() {
                 timeTable.append("\(lesson.1["PERIO"].rawValue as! String): \(lesson.1["ITRT_CNTNT"].rawValue as! String)")
             }
             if timeTable.count == 0 {

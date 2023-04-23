@@ -9,35 +9,46 @@ struct MealView: View {
     @State private var selectedDate = Date()
     
     var body: some View {
-        VStack{
-            DatePicker(
-                            "날짜 선택",
-                            selection: $selectedDate,
-                            displayedComponents: [.date]
-                        )
-            .datePickerStyle(.compact)
-                        .onChange(of: selectedDate, perform: { (value) in
-                            sendGetRequest()
-                        }).padding(10)
-            List(meals, id: \.self) { meal in
-                if meal.contains("!"){Text(meal.filter { !"!".contains($0) }).foregroundColor(Color.red)}
-                else {
-                    Text(meal)
+        NavigationView {
+            VStack{
+                HStack {
+                    Button("\(Image(systemName: "chevron.backward"))"){
+                        selectedDate = Calendar.current.date(byAdding: .day, value: -1, to: selectedDate)!
+                    }.buttonStyle(.bordered)
+                    DatePicker(
+                        "날짜 선택",
+                        selection: $selectedDate,
+                        displayedComponents: [.date]
+                    )
+                    .labelsHidden()
+                    .datePickerStyle(.compact)
+                    .onChange(of: selectedDate, perform: { (value) in
+                        sendGetRequest()
+                    }).padding(10)
+                    Button("\(Image(systemName: "chevron.forward"))"){
+                        selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate)!
+                    }.buttonStyle(.bordered)
                 }
-                
-            }.onAppear {
-                sendGetRequest()
-            }.listStyle(.inset)
-            AdBannerView()
-        }.onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
-                if status == .authorized {
-                    print("인증됨")
-                }
-                else {
-                    print("노노")
-                }
-            })
+                List(meals, id: \.self) { meal in
+                    if meal.contains("!"){Text(meal.filter { !"!".contains($0) }).foregroundColor(Color.red)}
+                    else {
+                        Text(meal)
+                    }
+                    
+                }.onAppear {
+                    sendGetRequest()
+                }.listStyle(.inset)
+                AdBannerView()
+            }.onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+                ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                    if status == .authorized {
+                        //print("인증됨")
+                    }
+                    else {
+                        //print("노노")
+                    }
+                })
+            }.navigationBarTitle("급식")
         }
     }
     
@@ -65,25 +76,25 @@ struct MealView: View {
         // 4. URLSessionDataTask 생성
         let task = session.dataTask(with: request) { data, response, error in
             // 5. 응답 처리
-            if let error = error {
-                print("Error: \(error)")
+            if error != nil {
+                meals = ["에러가 발생했어요. 지속될 경우 개발자에게 문의하세요."]
                 return
             }
             
             guard let response = response as? HTTPURLResponse,
                   (200..<300).contains(response.statusCode) else {
-                print("Invalid response")
+                meals = ["인터넷 연결을 확인하세요."]
                 return
             }
             
             guard let data = data else {
-                print("No data")
+                meals = ["문제가 발생했어요. 앱을 재실행해 주세요."]
                 return
             }
 
             // 6. 데이터 처리
             let mealJSON = JSON(data)
-            guard var meal = mealJSON["mealServiceDietInfo"][1]["row"][0]["DDISH_NM"].rawValue as? String else {
+            guard let meal = mealJSON["mealServiceDietInfo"][1]["row"][0]["DDISH_NM"].rawValue as? String else {
                 if schoolCode == nil {
                     meals = ["학교를 등록해주세요."]
                 } else{
@@ -93,12 +104,11 @@ struct MealView: View {
             }
             //meal = meal.filter { !"0123456789. ".contains($0) }
             //meal = meal.filter { !"()".contains($0) }
-            print(meal)
             meals = meal.components(separatedBy: "<br/>")
             for (index, meal) in meals.enumerated() {
                 if meal.split(separator: " ").count == 2 {
-                    var separatedMeal = meal.split(separator: " ")[1].filter { !"()".contains($0) }
-                    var spmeal = separatedMeal.split(separator: ".")
+                    let separatedMeal = meal.split(separator: " ")[1].filter { !"()".contains($0) }
+                    let spmeal = separatedMeal.split(separator: ".")
                     let allergyAlert = (allergy ?? "")
                     meals[index] = meal.filter { !"0123456789.()".contains($0) }
                     for allergies in spmeal{

@@ -12,21 +12,17 @@ struct MoreView: View {
         NavigationView {
             List {
                 NavigationLink("정보") {
-                    InfoView()
-              }
-              .navigationBarTitle("더보기")
+                    InfoView().navigationBarTitle("정보")
+              }.navigationBarTitle("더보기")
                 NavigationLink("학교 설정") {
-                        SchoolSettingsView()
+                    SchoolSettingsView().navigationBarTitle("학교 설정")
                       }
-                      .navigationBarTitle("더보기")
                 NavigationLink("알레르기 설정") {
-                        AllergySettingsView()
+                        AllergySettingsView().navigationBarTitle("알레르기 설정")
                       }
-                      .navigationBarTitle("더보기")
                 NavigationLink("학년/반 설정") {
-                        GradeClassView()
+                        GradeClassView().navigationBarTitle("학년/반 설정")
                       }
-                      .navigationBarTitle("더보기")
             }
             AdBannerView()
         }

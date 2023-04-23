@@ -14,15 +14,17 @@ struct InfoView: View {
     @State var schoolName: String? = UserDefaults.standard.object(forKey: "schoolName") as? String
     @State var classN: String? = UserDefaults.standard.object(forKey: "class") as? String
     @State var grade: String? = UserDefaults.standard.object(forKey: "grade") as? String
+    @State var appVersion: String? = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+
     
     var body: some View {
         List {
             Text("학교: \(schoolName ?? "없음")" )
-            Text("학년: \(grade ?? "없음")" )
-            Text("반: \(classN ?? "없음")" )
-            Text(schoolCode ?? "없음")
-            Text(officeCode ?? "없음")
-            Text(allergy ?? "없음")
+            Text("학년/반: \(grade ?? "없음")학년 \(classN ?? "없음")반" )
+            Text("앱 버전: \(appVersion ?? "찾을 수 없음")" )
+            Button("개발자에게 문의하기") {
+                UIApplication.shared.open(URL(string: "https://www.facebook.com/appmealtime")!)
+            }.foregroundColor(Color.blue)
         }.onAppear {
             schoolCode = (UserDefaults.standard.object(forKey: "schoolCode") as? String)
             officeCode = UserDefaults.standard.object(forKey: "officeCode") as? String
