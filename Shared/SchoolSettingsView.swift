@@ -22,7 +22,6 @@ struct SchoolSettingsView: View {
     @State var storedSchoolCode:String? = (UserDefaults.standard.object(forKey: "schoolCode") as? String)
     @State var officeCode: String = ""
     @State var storedOfficeCode:String? = (UserDefaults.standard.object(forKey: "officeCode") as? String)
-    @State var alertIsPresented: Bool = false
     @State var searchString: String = ""
     @State var isNextPageActive = false
     
@@ -33,7 +32,6 @@ struct SchoolSettingsView: View {
                         UserDefaults.standard.set(school.schoolCode, forKey: "schoolCode")
                         UserDefaults.standard.set(school.officeCode, forKey: "officeCode")
                         UserDefaults.standard.set(school.name, forKey: "schoolName")
-                        alertIsPresented.toggle()
                         self.isNextPageActive = true
                     }
                     NavigationLink(destination: GradeClassView(), isActive: $isNextPageActive) {
@@ -56,7 +54,7 @@ struct SchoolSettingsView: View {
 func sendGetRequest(stringToSearch: String) {
         schools = [School(name: "로딩중이에요.", address: "", schoolCode: "", officeCode: "")]
         // 1. URL 생성
-    let url = URL(string: "https://mealtimeapi.sungho-moon.workers.dev/hub/schoolInfo?Type=json&pIndex=1&pSize=10000&SCHUL_NM=\(stringToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)")!
+    let url = URL(string: "https://open.neis.go.kr/hub/schoolInfo?Type=json&SCHUL_NM=\(stringToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)&KEY=a9a5367947564a1aa13e46ba545de634")!
     
     
         
@@ -88,6 +86,7 @@ func sendGetRequest(stringToSearch: String) {
 
             // 6. 데이터 처리
             let schoolJSON = JSON(data)
+            
             schools = []
             if (schoolJSON["schoolInfo"][1]["row"].rawString()) != nil {
                 for i in 0..<schoolJSON["schoolInfo"][1]["row"].count {

@@ -55,15 +55,22 @@ struct GradeClassView: View {
             }
             .onChange(of: selectedGrade) { newValue in
                 UserDefaults.standard.set(String(selectedGrade), forKey: "grade")
+                print(selectedGrade)
                 sendGetRequest(selectedGrade: selectedGrade)
-            }.onAppear{
-                sendGetRequest(selectedGrade: 1)
+            }.onAppear {
+                if UserDefaults.standard.string(forKey: "class") == nil {
+                    UserDefaults.standard.set("1", forKey: "grade")
+                    UserDefaults.standard.set("1", forKey: "class")
+                    selectedGrade = 1
+                    selectedClass = 1
+                }
+                sendGetRequest(selectedGrade: selectedGrade)
                 schoolName = (UserDefaults.standard.object(forKey: "schoolName") as? String)
             }
             Picker(selection: $selectedClass, label: Text("반 선택")) {
                 if maxClass >= 1 {
                     ForEach(1...maxClass, id: \.self) { number in
-                        Text("\(number)")
+                        Text("\(number)").tag(number)
                     }
                 }
             }.onChange(of: selectedClass) { newValue in
@@ -108,8 +115,6 @@ struct GradeClassView: View {
             // 6. 데이터 처리
             let schoolJSON = JSON(data)
             maxClass = Int(schoolJSON["classInfo"][0]["head"][0]["list_total_count"].intValue)
-            UserDefaults.standard.set("1", forKey: "grade")
-            UserDefaults.standard.set("1", forKey: "class")
         }
         // 7. 요청 실행
         task.resume()
