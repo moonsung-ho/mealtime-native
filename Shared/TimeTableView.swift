@@ -64,9 +64,6 @@ struct TimeTableView: View {
                 schoolForm = "his"
             }
         }
-        print(schoolCode)
-        print(grade)
-        print(classN)
         
         // 1. URL 생성
         let url = URL(string: "https://mealtimeapi.sungho-moon.workers.dev/hub/\(schoolForm)Timetable?type=json&ATPT_OFCDC_SC_CODE=\(officeCode ?? "")&SD_SCHUL_CODE=\(schoolCode ?? "")&ALL_TI_YMD=\(formattedDate)&GRADE=\(grade ?? "")&CLASS_NM=\(classN ?? "")")!

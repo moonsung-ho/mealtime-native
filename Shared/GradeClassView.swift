@@ -14,9 +14,10 @@ struct GradeClassView: View {
     @State var schoolName:String? = (UserDefaults.standard.object(forKey: "schoolName") as? String)
     @State var maxClass: Int = 1
     @State var isNextPageActive = false
+    @State var alertPresent = false
     
     var body: some View {
-        List{
+        List {
             Picker(selection: $selectedGrade, label: Text("학년 선택")) {
                 if schoolName != nil {
                     if ((UserDefaults.standard.object(forKey: "schoolName") as? String)!.contains("초등학교")){
@@ -75,7 +76,10 @@ struct GradeClassView: View {
                 }
             }.onChange(of: selectedClass) { newValue in
                 UserDefaults.standard.set(String(selectedClass), forKey: "class")
-            }
+                alertPresent.toggle()
+            }.alert("학년과 반이 설정되었어요.", isPresented: $alertPresent) {
+                Button("OK", role: .cancel){}
+              }
         }
     }
     

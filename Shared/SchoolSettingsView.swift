@@ -25,6 +25,8 @@ struct SchoolSettingsView: View {
     @State var searchString: String = ""
     @State var isNextPageActive = false
     
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
             List(schools, id:\.self){ school in
                 HStack{
