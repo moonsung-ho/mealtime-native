@@ -13,8 +13,8 @@ import GoogleMobileAds
 struct mealtimeApp: App {
     @State private var selection = 1
     @AppStorage("_isFirstLaunching") var isFirstLaunch: Bool = true
-    @State private var isFirstLaunch: Bool = true
-
+    @State private var popoverPresented = true
+    
     var body: some Scene {
         WindowGroup {
             TabView(selection: $selection) {
