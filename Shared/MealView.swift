@@ -64,7 +64,7 @@ struct MealView: View {
         let officeCode: String? = UserDefaults.standard.object(forKey: "officeCode") as? String
         let allergy: String? = UserDefaults.standard.object(forKey: "allergy") as? String
         // 1. URL 생성
-        let url = URL(string: "https://mealtimeapi.sungho-moon.workers.dev/hub/mealServiceDietInfo?Type=json&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=\(officeCode ?? "")&SD_SCHUL_CODE=\(schoolCode ?? "")&MLSV_YMD=\(formattedDate)")!
+        let url = URL(string: "https://open.neis.go.kr/hub/mealServiceDietInfo?Type=json&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=\(officeCode ?? "")&SD_SCHUL_CODE=\(schoolCode ?? "")&MLSV_YMD=\(formattedDate)&KEY=a9a5367947564a1aa13e46ba545de634")!
         
         // 2. URL Request 생성
         var request = URLRequest(url: url)

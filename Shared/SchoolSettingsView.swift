@@ -36,9 +36,9 @@ struct SchoolSettingsView: View {
                         UserDefaults.standard.set(school.name, forKey: "schoolName")
                         self.isNextPageActive = true
                     }
-                    NavigationLink(destination: GradeClassView(), isActive: $isNextPageActive) {
-                        EmptyView()
-                    }
+//                    NavigationLink(destination: GradeClassView(), isActive: $isNextPageActive) {
+//                        EmptyView()
+//                    }
                 }
             }
             .listStyle(.inset)
@@ -50,6 +50,7 @@ struct SchoolSettingsView: View {
             .onChange(of: searchString, perform: { (value) in
                 sendGetRequest(stringToSearch: searchString)
             })
+            .sheet(isPresented: $isNextPageActive) {GradeClassView()}
 }
     
     
