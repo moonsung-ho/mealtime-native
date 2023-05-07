@@ -12,8 +12,9 @@ import GoogleMobileAds
 @main
 struct mealtimeApp: App {
     @State private var selection = 1
-    @AppStorage("_isFirstLaunching") var isFirstLaunch: Bool = true
-    @State private var popoverPresented = true
+//    @AppStorage("_isFirstLaunching") var isFirstLaunch: Bool = true
+    @State private var isFirstLaunch: Bool = true
+    @State private var settingsPresented = false
     
     var body: some Scene {
         WindowGroup {
@@ -23,21 +24,22 @@ struct mealtimeApp: App {
                 MoreView().tabItem { Image(systemName: "ellipsis.circle.fill");Text("더보기")}.tag(3)
             }.accentColor(.yellow)
             .onAppear{
-                let currentSystemScheme = UITraitCollection.current.userInterfaceStyle
-                if schemeTransform(userInterfaceStyle: currentSystemScheme) == .dark {
-                    UITabBar.appearance().backgroundColor = .black
-                }
+                UITabBar.appearance().backgroundColor = UIColor.systemBackground
+//                let currentSystemScheme = UITraitCollection.current.userInterfaceStyle
+//                if schemeTransform(userInterfaceStyle: currentSystemScheme) == .dark {
+//                    UITabBar.appearance().backgroundColor = Color.black
+//                }
             }
             .sheet(isPresented: $isFirstLaunch) {
                     VStack {
                         Image("LaunchIcon").resizable().scaledToFit().frame(width: 85, height: 85).cornerRadius(25).padding(.bottom, 10)
-                        Text("급식시간 시작하기").font(Font.title.bold())
+                        Text("급식시간 사용하기").font(Font.title.bold())
                         ScrollView{
                             VStack{
                                 HStack{
                                     Image(systemName: "fork.knife").resizable().scaledToFit().frame(width: 40, height: 40).padding(5)
                                     VStack(alignment: .leading){
-                                        Text("급식을 조회할 수 있어요.").font(Font.subheadline.bold())
+                                        Text("급식을 조회할 수 있어요").font(Font.subheadline.bold())
                                         Text("자신이 다니는 학교의 오늘과 내일,\n심지어 2주 후 급식도 확인할 수 있어요.").font(Font.subheadline).foregroundColor(Color.gray)
                                     }.frame(maxWidth: .infinity, alignment: .leading)
                                 }.padding(.horizontal, 35).padding(.top, 20)
@@ -51,28 +53,29 @@ struct mealtimeApp: App {
                                 HStack(){
                                     Image(systemName: "calendar").resizable().scaledToFit().frame(width: 40, height: 40).padding(5)
                                     VStack(alignment: .leading){
-                                        Text("시간표도 조회할 수 있어요.").font(Font.subheadline.bold())
-                                        Text("매일 아침 시간표를 확인하세요.").font(Font.subheadline).foregroundColor(Color.gray)
+                                        Text("시간표도 조회할 수 있어요").font(Font.subheadline.bold())
+                                        Text("매일 아침 시간표를 확인해 보세요.").font(Font.subheadline).foregroundColor(Color.gray)
                                     }.frame(maxWidth: .infinity, alignment: .leading)
                                 }.padding(.horizontal, 35).padding(.top, 25)
                                 HStack{
                                     Image(systemName: "allergens").resizable().scaledToFit().frame(width: 40, height: 40).padding(5)
                                     VStack(alignment: .leading){
-                                        Text("알레르기 식품을 경고해 드려요.").font(Font.subheadline.bold())
-                                        Text("알레르기가 있는 식재료를 설정하면\n그 식재료가 포함되어 있는 음식을\n 빨간색으로 경고해요.").font(Font.subheadline).foregroundColor(Color.gray)
+                                        Text("알레르기 식품을 경고해 드려요").font(Font.subheadline.bold())
+                                        Text("알레르기가 있는 식재료를 설정하면\n그 식재료가 포함되어 있는 음식을\n 빨간색으로 표시해요.").font(Font.subheadline).foregroundColor(Color.gray)
                                     }.frame(maxWidth: .infinity, alignment: .leading)
                                 }.padding(.horizontal, 35).padding(.top, 25)
                             }
                         }
                         VStack(alignment: .center){
-                            Text("오른쪽 아래 더보기 탭에서 학교와 알레르기,\n학년/반을 설정할 수 있어요. [개발자에게 문의하기](https://www.facebook.com/appmealtime)").font(Font.footnote).frame(alignment: .center).multilineTextAlignment(.center)
+                            Text("더보기 탭에서 학교와 알레르기,\n학년과 반을 설정할 수 있어요. [개발자에게 문의하기...](https://www.facebook.com/appmealtime)").font(Font.footnote).frame(alignment: .center).multilineTextAlignment(.center)
                         }
                         Group {
                             Button(action: {
                                 UserDefaults.standard.set(true, forKey: "isAppAlreadyLaunchedOnce")
                                 isFirstLaunch.toggle()
+                                settingsPresented = true
                             }) {
-                                Text("계속")
+                                Text("시작하기")
                                     .padding(.horizontal, 35)
                                     .padding(.vertical, 15)
                                     .font(Font.title3.bold())
@@ -87,14 +90,29 @@ struct mealtimeApp: App {
                     }.padding(.bottom, 30).padding(.top, 50)
                 }
                 .interactiveDismissDisabled(true)
+                .sheet(isPresented: $settingsPresented) {
+                    NavigationView {
+                        SchoolSettingsView()
+                            .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                VStack(alignment: .leading) {
+                                    Text("학교 설정하기").font(.title2).bold()
+                                    Text("다니는 학교를 검색하고 선택해 주세요.").font(Font.footnote).foregroundColor(Color(UIColor.darkGray))
+                                }
+                            }
+                        }
+                    }.padding(.top, 10)
+                }
             }
     }
     
     func schemeTransform(userInterfaceStyle:UIUserInterfaceStyle) -> ColorScheme {
         if userInterfaceStyle == .light {
             return .light
-        }else if userInterfaceStyle == .dark {
+        }
+        else if userInterfaceStyle == .dark {
             return .dark
         }
-        return .light}
+        return .light
+    }
 }

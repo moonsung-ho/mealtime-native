@@ -48,7 +48,7 @@ struct TimeTableView: View {
         }
     
     func sendGetRequest() {
-        timeTable = ["로딩중이에요."]
+        timeTable = ["시간표를 가져오고 있어요."]
         let schoolCode: String? = (UserDefaults.standard.object(forKey: "schoolCode") as? String)
         let officeCode: String? = UserDefaults.standard.object(forKey: "officeCode") as? String
         let classN: String? = UserDefaults.standard.object(forKey: "class") as? String
@@ -78,18 +78,18 @@ struct TimeTableView: View {
         let task = session.dataTask(with: request) { data, response, error in
             // 5. 응답 처리
             if error != nil {
-                timeTable = ["에러가 발생했어요. 문제가 지속될 경우 개발자에게 문의하세요."]
+                timeTable = ["문제가 발생했어요. 더보기 탭 > 내 설정 확인하기에서 개발자에게 문의해 보세요."]
                 return
             }
             
             guard let response = response as? HTTPURLResponse,
                   (200..<300).contains(response.statusCode) else {
-                timeTable = ["인터넷 연결을 확인하세요."]
+                timeTable = ["인터넷 연결을 확인해 보세요."]
                 return
             }
             
             guard let data = data else {
-                timeTable = ["문제가 발생했어요."]
+                timeTable = ["문제가 발생했어요. 앱을 재실행해 보세요."]
                 return
             }
 
@@ -112,9 +112,9 @@ struct TimeTableView: View {
             }
             if timeTable.count == 0 {
                 if schoolCode == nil{
-                    timeTable.append("학교를 등록해주세요.")
+                    timeTable.append("학교와 반을 등록하면 시간표를 볼 수 있어요.")
                 } else if grade == nil {
-                    timeTable.append("학년/반을 등록해주세요.")
+                    timeTable.append("학년/반을 등록하면 시간표를 볼 수 있어요.")
                 } else {
                     timeTable.append("시간표가 등록되지 않았어요.")
                 }

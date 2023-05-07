@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B53D977A951AFC38B21751B706C1DF83"
-               BuildableName = "GoogleAppMeasurement"
-               BlueprintName = "GoogleAppMeasurement"
+               BlueprintIdentifier = "BD9F52E07CA8CCC9E5112A7D8C1CE821"
+               BuildableName = "AlertToast.framework"
+               BlueprintName = "AlertToast"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

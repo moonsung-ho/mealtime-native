@@ -11,9 +11,9 @@ struct MoreView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink("정보") {
-                    InfoView().navigationBarTitle("정보")
-              }.navigationBarTitle("더보기")
+                NavigationLink("내 설정 확인하기") {
+                    InfoView().navigationBarTitle("내 설정")
+              }
                 NavigationLink("학교 설정") {
                     SchoolSettingsView().navigationBarTitle("학교 설정")
                       }
@@ -21,9 +21,9 @@ struct MoreView: View {
                         AllergySettingsView().navigationBarTitle("알레르기 설정")
                       }
                 NavigationLink("학년/반 설정") {
-                        GradeClassView().navigationBarTitle("학년/반 설정")
+                        GradeClassView()
                       }
-            }
+            }.navigationBarTitle("더보기").navigationBarTitleDisplayMode(.large)
             AdBannerView()
         }
     }

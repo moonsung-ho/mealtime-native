@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftyJSON
+import AlertToast
 
 struct School: Hashable {
     let id = UUID()
@@ -24,38 +25,45 @@ struct SchoolSettingsView: View {
     @State var storedOfficeCode:String? = (UserDefaults.standard.object(forKey: "officeCode") as? String)
     @State var searchString: String = ""
     @State var isNextPageActive = false
-    
-    @Environment(\.dismiss) var dismiss
+    @State var selectedSchool:String = "없음"
+    @Environment(\.presentationMode) var presentation
     
     var body: some View {
-            List(schools, id:\.self){ school in
-                HStack{
-                    Button("\(school.name)\n\(school.address)") {
-                        UserDefaults.standard.set(school.schoolCode, forKey: "schoolCode")
-                        UserDefaults.standard.set(school.officeCode, forKey: "officeCode")
-                        UserDefaults.standard.set(school.name, forKey: "schoolName")
-                        self.isNextPageActive = true
+        List(schools, id:\.self){ school in
+            HStack{
+                Button("\(school.name)\n\(Text(school.address).font(Font.footnote).foregroundColor(Color.gray))") {
+                    selectedSchool = school.name
+                    UserDefaults.standard.set(school.schoolCode, forKey: "schoolCode")
+                    UserDefaults.standard.set(school.officeCode, forKey: "officeCode")
+                    UserDefaults.standard.set(school.name, forKey: "schoolName")
+                }.onChange(of: selectedSchool, perform: {(value) in
+                    isNextPageActive = true
+                })
+            }
+        }
+        .listStyle(.inset)
+        .searchable(
+            text: $searchString,
+            placement: .navigationBarDrawer,
+            prompt: "학교 검색하기"
+        )
+        .onChange(of: searchString, perform: { (value) in
+            sendGetRequest(stringToSearch: searchString)
+        })
+        .sheet(isPresented: $isNextPageActive) {
+            NavigationView {
+                GradeClassView().navigationTitle(selectedSchool).toolbar{
+                    Button("완료") {
+                        isNextPageActive = false
+                        presentation.wrappedValue.dismiss()
                     }
-//                    NavigationLink(destination: GradeClassView(), isActive: $isNextPageActive) {
-//                        EmptyView()
-//                    }
                 }
             }
-            .listStyle(.inset)
-            .searchable(
-                text: $searchString,
-                placement: .navigationBarDrawer,
-                prompt: "학교 검색"
-            )
-            .onChange(of: searchString, perform: { (value) in
-                sendGetRequest(stringToSearch: searchString)
-            })
-            .sheet(isPresented: $isNextPageActive) {GradeClassView()}
-}
-    
+        }
+    }
     
 func sendGetRequest(stringToSearch: String) {
-        schools = [School(name: "로딩중이에요.", address: "", schoolCode: "", officeCode: "")]
+        schools = [School(name: "학교를 찾고 있어요", address: "곧 찾아서 가져올게요.", schoolCode: "", officeCode: "")]
         // 1. URL 생성
     let url = URL(string: "https://open.neis.go.kr/hub/schoolInfo?Type=json&SCHUL_NM=\(stringToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)&KEY=a9a5367947564a1aa13e46ba545de634")!
     

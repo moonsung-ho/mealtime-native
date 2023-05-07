@@ -17,6 +17,6 @@ struct AdBannerView: View {
     var body: some View {
         AdBannerUIView()
             .frame(height: 50)
-            .background(Color.white)
+            .foregroundColor(Color(UIColor.systemBackground))
     }
 }

@@ -12,7 +12,7 @@ struct AllergySettingsView: View {
     
     var body: some View {
         List{
-            Picker(selection: $selectedAllergy, label: Text("알레르기 선택")) {
+            Picker(selection: $selectedAllergy, label: Text("알레르기가 있는 식재료 선택하기")) {
                 Group{
                     Text("없음").tag(0)
                     Text("난류").tag(1)
