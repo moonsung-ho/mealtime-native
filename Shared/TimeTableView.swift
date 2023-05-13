@@ -5,6 +5,7 @@ struct TimeTableView: View {
     @State var timeTable: [String] = []
     @State private var selectedDate = Date()
     @State var schoolForm = "els"
+    @AppStorage("after7Display") var after7Display: Bool = false
     
     var body: some View {
         NavigationView {
@@ -27,13 +28,20 @@ struct TimeTableView: View {
                         selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate)!
                     }.buttonStyle(.bordered)
                 }
-                List(timeTable, id: \.self) { meal in
-                    if meal.contains("!"){Text(meal.filter { !"!".contains($0) }).foregroundColor(Color.red)}
+                List(timeTable, id: \.self) { lesson in
+                    if lesson.contains("!"){Text(lesson.filter { !"!".contains($0) }).foregroundColor(Color.red)}
                     else {
-                        Text(meal)
+                        Text(lesson)
                     }
                     
                 }.onAppear {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyyMMdd"
+                    if after7Display == true {
+                        if dateFormatter.string(from: selectedDate) == dateFormatter.string(from: Date() ) {
+                            selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+                        }
+                    }
                     sendGetRequest()
                 }.listStyle(.inset)
                 AdBannerView()

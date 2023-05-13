@@ -662,7 +662,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.3.1;
+				MARKETING_VERSION = 6.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sungho0205.geupsik;
 				PRODUCT_NAME = mealtime;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -700,7 +700,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.3.1;
+				MARKETING_VERSION = 6.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sungho0205.geupsik;
 				PRODUCT_NAME = mealtime;
 				PROVISIONING_PROFILE_SPECIFIER = "";

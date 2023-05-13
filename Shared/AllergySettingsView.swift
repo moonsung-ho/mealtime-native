@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AllergySettingsView: View {
-    @State var selectedAllergy: Int = Int(UserDefaults.standard.string(forKey: "allergy") ?? "0") ?? 0
+    @State var selectedAllergy: Int = Int(UserDefaults.standard.object(forKey: "allergy") as! String) ?? 0
     
     var body: some View {
         List{
@@ -39,6 +39,8 @@ struct AllergySettingsView: View {
             }
             .onChange(of: selectedAllergy) { newValue in
                 UserDefaults.standard.set(String(selectedAllergy), forKey: "allergy")
+            }.onAppear{
+                selectedAllergy = Int(UserDefaults.standard.object(forKey: "allergy") as! String) ?? 0
             }
         }
     }

@@ -7,6 +7,7 @@ struct MealView: View {
     @State var meals: [String] = []
     @State var meal: String = ""
     @State private var selectedDate = Date()
+    @AppStorage("after7Display") var after7Display: Bool = false
     
     var body: some View {
         NavigationView {
@@ -36,6 +37,13 @@ struct MealView: View {
                     }
                     
                 }.onAppear {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyyMMdd"
+                    if after7Display == true {
+                        if dateFormatter.string(from: selectedDate) == dateFormatter.string(from: Date() ) {
+                            selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+                        }
+                    }
                     sendGetRequest()
                 }.listStyle(.inset)
                 AdBannerView()

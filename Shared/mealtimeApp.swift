@@ -12,9 +12,9 @@ import GoogleMobileAds
 @main
 struct mealtimeApp: App {
     @State private var selection = 1
-//    @AppStorage("_isFirstLaunching") var isFirstLaunch: Bool = true
-    @State private var isFirstLaunch: Bool = true
+    @AppStorage("_isFirstLaunching") var isFirstLaunch: Bool = true
     @State private var settingsPresented = false
+//    @State private var isFirstLaunch = true
     
     var body: some Scene {
         WindowGroup {
@@ -87,10 +87,10 @@ struct mealtimeApp: App {
                         }
                         .frame(alignment: .bottom)
 //                        .padding(.top, 20)
-                    }.padding(.bottom, 30).padding(.top, 50)
+                    }.padding(.bottom, 30).padding(.top, 50).interactiveDismissDisabled(true)
                 }
                 .interactiveDismissDisabled(true)
-                .sheet(isPresented: $settingsPresented) {
+                .sheet(isPresented: $settingsPresented, onDismiss: {MealView().sendGetRequest()}) {
                     NavigationView {
                         SchoolSettingsView()
                             .toolbar {
@@ -101,8 +101,8 @@ struct mealtimeApp: App {
                                 }
                             }
                         }
-                    }.padding(.top, 10)
-                }
+                    }.padding(.top, 10).interactiveDismissDisabled(true)
+                }.interactiveDismissDisabled(true)
             }
     }
     
