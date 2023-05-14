@@ -37,13 +37,19 @@ struct TimeTableView: View {
                 }.onAppear {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyyMMdd"
+                    let calendar = Calendar.current
+                    let hour = calendar.component(.hour, from: Date())
                     if after7Display == true {
-                        if dateFormatter.string(from: selectedDate) == dateFormatter.string(from: Date() ) {
-                            selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+                        if hour >= 20 {
+                            if dateFormatter.string(from: selectedDate) == dateFormatter.string(from: Date() ) {
+                                selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+                            }
                         }
                     }
                     sendGetRequest()
-                }.listStyle(.inset)
+                }.listStyle(.inset).refreshable {
+                    sendGetRequest()
+                }
                 AdBannerView()
             }.navigationBarTitle("시간표")
         }

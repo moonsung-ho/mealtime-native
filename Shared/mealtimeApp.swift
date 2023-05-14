@@ -15,6 +15,7 @@ struct mealtimeApp: App {
     @AppStorage("_isFirstLaunching") var isFirstLaunch: Bool = true
     @State private var settingsPresented = false
 //    @State private var isFirstLaunch = true
+    @AppStorage("needToDisplaySchoolSettingsModal") var needToDisplaySchoolSettingsModal: Bool = false
     
     var body: some Scene {
         WindowGroup {
@@ -25,10 +26,6 @@ struct mealtimeApp: App {
             }.accentColor(.yellow)
             .onAppear{
                 UITabBar.appearance().backgroundColor = UIColor.systemBackground
-//                let currentSystemScheme = UITraitCollection.current.userInterfaceStyle
-//                if schemeTransform(userInterfaceStyle: currentSystemScheme) == .dark {
-//                    UITabBar.appearance().backgroundColor = Color.black
-//                }
             }
             .sheet(isPresented: $isFirstLaunch) {
                     VStack {
@@ -61,7 +58,7 @@ struct mealtimeApp: App {
                                     Image(systemName: "allergens").resizable().scaledToFit().frame(width: 40, height: 40).padding(5)
                                     VStack(alignment: .leading){
                                         Text("알레르기 식품을 경고해 드려요").font(Font.subheadline.bold())
-                                        Text("알레르기가 있는 식재료를 설정하면\n그 식재료가 포함되어 있는 음식을\n 빨간색으로 표시해요.").font(Font.subheadline).foregroundColor(Color.gray)
+                                        Text("알레르기가 있는 식재료를 설정하면\n그 식재료가 포함되어 있는 음식을\n빨간색으로 표시해요.").font(Font.subheadline).foregroundColor(Color.gray)
                                     }.frame(maxWidth: .infinity, alignment: .leading)
                                 }.padding(.horizontal, 35).padding(.top, 25)
                             }
@@ -74,6 +71,7 @@ struct mealtimeApp: App {
                                 UserDefaults.standard.set(true, forKey: "isAppAlreadyLaunchedOnce")
                                 isFirstLaunch.toggle()
                                 settingsPresented = true
+                                needToDisplaySchoolSettingsModal = true
                             }) {
                                 Text("시작하기")
                                     .padding(.horizontal, 35)
@@ -90,19 +88,22 @@ struct mealtimeApp: App {
                     }.padding(.bottom, 30).padding(.top, 50).interactiveDismissDisabled(true)
                 }
                 .interactiveDismissDisabled(true)
-                .sheet(isPresented: $settingsPresented, onDismiss: {MealView().sendGetRequest()}) {
-                    NavigationView {
-                        SchoolSettingsView()
-                            .toolbar {
-                            ToolbarItem(placement: .navigationBarLeading) {
-                                VStack(alignment: .leading) {
-                                    Text("학교 설정하기").font(.title2).bold()
-                                    Text("다니는 학교를 검색하고 선택해 주세요.").font(Font.footnote).foregroundColor(Color(UIColor.darkGray))
-                                }
-                            }
-                        }
-                    }.padding(.top, 10).interactiveDismissDisabled(true)
-                }.interactiveDismissDisabled(true)
+//                .sheet(isPresented: $settingsPresented) {
+//                    NavigationView {
+//                        SchoolSettingsView()
+//                            .toolbar {
+//                            ToolbarItem(placement: .navigationBarLeading) {
+//                                VStack(alignment: .leading) {
+//                                    Text("학교 설정하기").font(.title2).bold()
+//                                    Text("다니는 학교를 검색하고 선택해 주세요.").font(Font.footnote).foregroundColor(Color(UIColor.secondaryLabel))
+//                                }
+//                            }
+//                        }
+//                    }.padding(.top, 10).interactiveDismissDisabled(true)
+//                        .onDisappear {
+//                            MealView().refresh()
+//                        }
+//                }.interactiveDismissDisabled(true)
             }
     }
     

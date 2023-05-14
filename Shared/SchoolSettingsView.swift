@@ -36,6 +36,7 @@ struct SchoolSettingsView: View {
                     UserDefaults.standard.set(school.schoolCode, forKey: "schoolCode")
                     UserDefaults.standard.set(school.officeCode, forKey: "officeCode")
                     UserDefaults.standard.set(school.name, forKey: "schoolName")
+                    MealView().sendGetRequest()
                 }.onChange(of: selectedSchool, perform: {(value) in
                     isNextPageActive = true
                 })
