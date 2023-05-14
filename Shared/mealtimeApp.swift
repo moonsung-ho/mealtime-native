@@ -64,7 +64,7 @@ struct mealtimeApp: App {
                             }
                         }
                         VStack(alignment: .center){
-                            Text("더보기 탭에서 학교와 알레르기,\n학년과 반을 설정할 수 있어요. [개발자에게 문의하기...](https://www.facebook.com/appmealtime)").font(Font.footnote).frame(alignment: .center).multilineTextAlignment(.center)
+                            Text("더보기 탭에서 설정할 수 있어요.\n[개발자에게 문의하기...](https://www.facebook.com/appmealtime)").font(Font.footnote).frame(alignment: .center).multilineTextAlignment(.center)
                         }
                         Group {
                             Button(action: {
