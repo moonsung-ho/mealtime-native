@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftyJSON
 import AlertToast
+import DebouncedOnChange
 
 struct School: Hashable {
     let id = UUID()
@@ -17,6 +18,7 @@ struct School: Hashable {
     let officeCode: String
 }
 
+@available(iOS 16.0, *)
 struct SchoolSettingsView: View {
     @State var schools:[School] = []
     @State var schoolCode: String = ""
@@ -46,11 +48,11 @@ struct SchoolSettingsView: View {
         .searchable(
             text: $searchString,
             placement: .navigationBarDrawer,
-            prompt: "학교 검색하기"
+            prompt: "급식중학교"
         )
-        .onChange(of: searchString, perform: { (value) in
+        .onChange(of: searchString, debounceTime: .milliseconds(400)) { (value) in
             sendGetRequest(stringToSearch: searchString)
-        })
+        }
         .sheet(isPresented: $isNextPageActive) {
             NavigationView {
                 GradeClassView().navigationTitle(selectedSchool).toolbar{

@@ -8,6 +8,7 @@
 import SwiftUI
 import AppTrackingTransparency
 import GoogleMobileAds
+import SwiftyJSON
 
 @main
 struct mealtimeApp: App {
@@ -101,10 +102,46 @@ struct mealtimeApp: App {
 //                        }
 //                    }.padding(.top, 10).interactiveDismissDisabled(true)
 //                        .onDisappear {
-//                            MealView().refresh()
 //                        }
 //                }.interactiveDismissDisabled(true)
             }
+    }
+    
+    func sendGetRequest() {
+        // 1. URL 생성
+        let url = URL(string: "https://raw.githubusercontent.com/moonsung-ho/mealtime-native/master/notice.json")!
+        
+        // 2. URL Request 생성
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        // 3. URLSession 생성
+        let session = URLSession.shared
+        
+        // 4. URLSessionDataTask 생성
+        let task = session.dataTask(with: request) { data, response, error in
+            // 5. 응답 처리
+            if error != nil {
+                //에러
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse,
+                  (200..<300).contains(response.statusCode) else {
+                //에러
+                return
+            }
+            
+            guard let data = data else {
+                //에러
+                return
+            }
+
+            // 6. 데이터 처리
+            let result = JSON(data)
+        }
+        // 7. 요청 실행
+        task.resume()
     }
     
     func schemeTransform(userInterfaceStyle:UIUserInterfaceStyle) -> ColorScheme {

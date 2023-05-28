@@ -58,7 +58,6 @@ struct GradeClassView: View {
                 }
                 .onChange(of: selectedGrade) { newValue in
                     UserDefaults.standard.set(String(selectedGrade), forKey: "grade")
-                    print(selectedGrade)
                     sendGetRequest(selectedGrade: selectedGrade)
                 }.onAppear {
                     if UserDefaults.standard.string(forKey: "class") == nil {
@@ -80,9 +79,6 @@ struct GradeClassView: View {
                     UserDefaults.standard.set(String(selectedClass), forKey: "class")
                     alertPresent.toggle()
                 }
-                //             .alert("이제 \(selectedGrade)학년 \(selectedClass)반의 시간표가 표시돼요.", isPresented: $alertPresent) {
-                //                Button("확인", role: .cancel){}
-                //            }
             }
             .toast(isPresenting: $alertPresent) {
                 AlertToast(displayMode: .banner(.pop), type: .complete(Color.green), title: "학년과 반이 설정됐어요", subTitle: "이제 \(schoolName ?? "") \(selectedGrade)학년 \(selectedClass)반의 시간표가 표시돼요.")

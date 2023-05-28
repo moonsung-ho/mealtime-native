@@ -120,7 +120,6 @@ struct TimeTableView: View {
             //meal = meal.filter { !"0123456789. ".contains($0) }
             //meal = meal.filter { !"()".contains($0) }
             timeTable.remove(at: 0)
-            print(timeTableJSON["\(schoolForm)Timetable"][1]["row"])
             for (_, lesson) in timeTableJSON["\(schoolForm)Timetable"][1]["row"].enumerated() {
                 timeTable.append("\(lesson.1["PERIO"].rawValue as! String): \(lesson.1["ITRT_CNTNT"].rawValue as! String)")
             }
