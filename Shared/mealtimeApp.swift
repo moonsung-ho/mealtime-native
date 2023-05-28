@@ -9,12 +9,15 @@ import SwiftUI
 import AppTrackingTransparency
 import GoogleMobileAds
 import SwiftyJSON
+import AlertToast
 
 @main
 struct mealtimeApp: App {
     @State private var selection = 1
     @AppStorage("_isFirstLaunching") var isFirstLaunch: Bool = true
     @State private var settingsPresented = false
+    @State var alertPresent = false
+    @State var alertBody = ""
 //    @State private var isFirstLaunch = true
     @AppStorage("needToDisplaySchoolSettingsModal") var needToDisplaySchoolSettingsModal: Bool = false
     
@@ -27,6 +30,7 @@ struct mealtimeApp: App {
             }.accentColor(.yellow)
             .onAppear{
                 UITabBar.appearance().backgroundColor = UIColor.systemBackground
+                sendGetRequest()
             }
             .sheet(isPresented: $isFirstLaunch) {
                     VStack {
@@ -89,6 +93,9 @@ struct mealtimeApp: App {
                     }.padding(.bottom, 30).padding(.top, 50).interactiveDismissDisabled(true)
                 }
                 .interactiveDismissDisabled(true)
+                .toast(isPresenting: $alertPresent, duration: 10, tapToDismiss: true) {
+                    AlertToast(displayMode: .banner(.pop), type: .error(Color.red), title: "공지사항이 있어요.", subTitle: alertBody)
+                }
 //                .sheet(isPresented: $settingsPresented) {
 //                    NavigationView {
 //                        SchoolSettingsView()
@@ -109,7 +116,7 @@ struct mealtimeApp: App {
     
     func sendGetRequest() {
         // 1. URL 생성
-        let url = URL(string: "https://raw.githubusercontent.com/moonsung-ho/mealtime-native/master/notice.json")!
+        let url = URL(string: "https://raw.githubusercontent.com/moonsung-ho/mealtime-native/master/Shared/notice.json")!
         
         // 2. URL Request 생성
         var request = URLRequest(url: url)
@@ -123,22 +130,30 @@ struct mealtimeApp: App {
             // 5. 응답 처리
             if error != nil {
                 //에러
+                print("error1")
                 return
             }
             
             guard let response = response as? HTTPURLResponse,
                   (200..<300).contains(response.statusCode) else {
                 //에러
+                print("error2")
                 return
             }
             
             guard let data = data else {
                 //에러
+                print("error3")
                 return
             }
 
             // 6. 데이터 처리
             let result = JSON(data)
+            
+            print(result)
+            print("ddd")
+            alertPresent = result["notification"].boolValue
+            alertBody = result["body"].rawValue as! String
         }
         // 7. 요청 실행
         task.resume()
