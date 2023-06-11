@@ -28,6 +28,7 @@ struct SchoolSettingsView: View {
     @State var searchString: String = ""
     @State var isNextPageActive = false
     @State var selectedSchool:String = "없음"
+    @State var schoolFilter:String = ""
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
@@ -52,8 +53,35 @@ struct SchoolSettingsView: View {
             placement: .navigationBarDrawer,
             prompt: "급식중학교"
         )
+        .toolbar{
+            Picker(selection: $schoolFilter , label: Text("지역 필터")) {
+                Group{
+                    Text("모든 지역").tag("")
+                    Text("서울").tag("서울특별시")
+                    Text("경기").tag("경기도")
+                    Text("부산").tag("부산광역시")
+                    Text("대구").tag("대구광역시")
+                    Text("인천").tag("인천광역시")
+                    Text("광주").tag("광주광역시")
+                    Text("대전").tag("대전광역시")
+                    Text("울산").tag("울산광역시")
+                    Text("세종").tag("세종특별자치시")
+                }
+                Text("충북").tag("충청북도")
+                Text("충남").tag("충청남도")
+                Text("전북").tag("전라북도")
+                Text("전남").tag("전라남도")
+                Text("경북").tag("경상북도")
+                Text("경남").tag("경상남도")
+                Text("강원").tag("강원도")
+                Text("제주").tag("제주특별자치도")
+            }
+        }
+        .onChange(of: schoolFilter){(value) in
+            sendGetRequest(stringToSearch: searchString, region: schoolFilter)
+        }
         .onChange(of: searchString, debounceTime: .milliseconds(400)) { (value) in
-            sendGetRequest(stringToSearch: searchString)
+            sendGetRequest(stringToSearch: searchString, region: schoolFilter)
         }
         .sheet(isPresented: $isNextPageActive) {
             NavigationView {
@@ -67,10 +95,10 @@ struct SchoolSettingsView: View {
         }
     }
     
-func sendGetRequest(stringToSearch: String) {
+    func sendGetRequest(stringToSearch: String, region: String) {
         schools = [School(name: "학교를 찾고 있어요", address: "곧 찾아서 가져올게요.", schoolCode: "", officeCode: "")]
         // 1. URL 생성
-    let url = URL(string: "https://open.neis.go.kr/hub/schoolInfo?Type=json&SCHUL_NM=\(stringToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)&KEY=a9a5367947564a1aa13e46ba545de634&pSize=100")!
+    let url = URL(string: "https://open.neis.go.kr/hub/schoolInfo?Type=json&SCHUL_NM=\(stringToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)&KEY=a9a5367947564a1aa13e46ba545de634&pSize=20&LCTN_SC_NM=\(region.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)")!
     
     
         
