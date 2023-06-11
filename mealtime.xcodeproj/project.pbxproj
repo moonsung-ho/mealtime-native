@@ -11,6 +11,9 @@
 		8D7B5E56725D8429DB39C774 /* Pods_mealtime__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987E9CAC0DF980BB92316EA2 /* Pods_mealtime__iOS_.framework */; };
 		CB638AB32A2311E80097796E /* notice.json in Resources */ = {isa = PBXBuildFile; fileRef = CB638AB22A2311E80097796E /* notice.json */; };
 		CB638AB42A2311E80097796E /* notice.json in Resources */ = {isa = PBXBuildFile; fileRef = CB638AB22A2311E80097796E /* notice.json */; };
+		CB638AB72A23BC090097796E /* AsyncNeiSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB638AB62A23BC090097796E /* AsyncNeiSwift */; };
+		CB638AB92A23BC090097796E /* CombineNeiSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB638AB82A23BC090097796E /* CombineNeiSwift */; };
+		CB638ABB2A23BC090097796E /* NeiSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB638ABA2A23BC090097796E /* NeiSwift */; };
 		CBAC8CFD2A19F9A700EE1AD6 /* DebouncedOnChange in Frameworks */ = {isa = PBXBuildFile; productRef = CBAC8CFC2A19F9A700EE1AD6 /* DebouncedOnChange */; };
 		CBB3509E29EA9A4D006AB8A0 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB3509D29EA9A4D006AB8A0 /* InfoView.swift */; };
 		CBB3509F29EA9A4D006AB8A0 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB3509D29EA9A4D006AB8A0 /* InfoView.swift */; };
@@ -96,7 +99,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D7B5E56725D8429DB39C774 /* Pods_mealtime__iOS_.framework in Frameworks */,
+				CB638AB92A23BC090097796E /* CombineNeiSwift in Frameworks */,
 				CBAC8CFD2A19F9A700EE1AD6 /* DebouncedOnChange in Frameworks */,
+				CB638ABB2A23BC090097796E /* NeiSwift in Frameworks */,
+				CB638AB72A23BC090097796E /* AsyncNeiSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +251,9 @@
 			name = "mealtime (iOS)";
 			packageProductDependencies = (
 				CBAC8CFC2A19F9A700EE1AD6 /* DebouncedOnChange */,
+				CB638AB62A23BC090097796E /* AsyncNeiSwift */,
+				CB638AB82A23BC090097796E /* CombineNeiSwift */,
+				CB638ABA2A23BC090097796E /* NeiSwift */,
 			);
 			productName = "mealtime (iOS)";
 			productReference = CBCB704B28AF5DB0003DF9D6 /* mealtime.app */;
@@ -342,6 +351,7 @@
 			mainGroup = CBCB703E28AF5DAA003DF9D6;
 			packageReferences = (
 				CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */,
+				CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */,
 			);
 			productRefGroup = CBCB704C28AF5DB0003DF9D6 /* Products */;
 			projectDirPath = "";
@@ -908,6 +918,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/baekteun/NeiSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Tunous/DebouncedOnChange.git";
@@ -919,6 +937,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CB638AB62A23BC090097796E /* AsyncNeiSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */;
+			productName = AsyncNeiSwift;
+		};
+		CB638AB82A23BC090097796E /* CombineNeiSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */;
+			productName = CombineNeiSwift;
+		};
+		CB638ABA2A23BC090097796E /* NeiSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */;
+			productName = NeiSwift;
+		};
 		CBAC8CFC2A19F9A700EE1AD6 /* DebouncedOnChange */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */;

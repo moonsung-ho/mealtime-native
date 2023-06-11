@@ -30,7 +30,8 @@ struct mealtimeApp: App {
             }.accentColor(.yellow)
             .onAppear{
                 UITabBar.appearance().backgroundColor = UIColor.systemBackground
-                sendGetRequest()
+                
+                neisIsShit()
             }
             .sheet(isPresented: $isFirstLaunch) {
                     VStack {
@@ -93,70 +94,53 @@ struct mealtimeApp: App {
                     }.padding(.bottom, 30).padding(.top, 50).interactiveDismissDisabled(true)
                 }
                 .interactiveDismissDisabled(true)
-                .toast(isPresenting: $alertPresent, duration: 10, tapToDismiss: true) {
-                    AlertToast(displayMode: .banner(.pop), type: .error(Color.red), title: "공지사항이 있어요.", subTitle: alertBody)
+//                .toast(isPresenting: $alertPresent, duration: 10, tapToDismiss: true) {
+//                    AlertToast(displayMode: .banner(.pop), type: .error(Color.red), title: "공지사항이 있어요.", subTitle: alertBody)
+//                }
+                .sheet(isPresented: $settingsPresented) {
+                    NavigationView {
+                        SchoolSettingsView()
+                            .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                VStack(alignment: .leading) {
+                                    Text("학교 설정하기").font(.title2).bold()
+                                    Text("다니는 학교를 검색하고 선택해 주세요.").font(Font.footnote).foregroundColor(Color(UIColor.secondaryLabel))
+                                }
+                            }
+                        }
+                    }.padding(.top, 10).interactiveDismissDisabled(true)
+                        .onDisappear {
+                        }
+                }.interactiveDismissDisabled(true)
+                .sheet(isPresented: $alertPresent) {
+                    NavigationView {
+                        VStack(alignment:.center){
+                            Text("교육청 나이스의 시스템 점검으로 인해\n급식시간의 모든 서비스가 작동하지 않아요.\n궁금한 점이 있다면 [개발자에게 문의](https://www.facebook.com/appmealtime)하거나\n[나이스](https://neis.go.kr)를 참고해 주세요.")
+                                .frame(alignment: .center).multilineTextAlignment(.center)
+                                .toolbar {
+                                    ToolbarItem(placement: .navigationBarLeading) {
+                                        VStack(alignment: .leading) {
+                                            Text("⚠️공지사항").font(.title).bold()
+                                        }
+                                    }
+                                }
+                        }
+                    }.padding(.top, 10) .presentationDetents([.fraction(0.4)])
                 }
-//                .sheet(isPresented: $settingsPresented) {
-//                    NavigationView {
-//                        SchoolSettingsView()
-//                            .toolbar {
-//                            ToolbarItem(placement: .navigationBarLeading) {
-//                                VStack(alignment: .leading) {
-//                                    Text("학교 설정하기").font(.title2).bold()
-//                                    Text("다니는 학교를 검색하고 선택해 주세요.").font(Font.footnote).foregroundColor(Color(UIColor.secondaryLabel))
-//                                }
-//                            }
-//                        }
-//                    }.padding(.top, 10).interactiveDismissDisabled(true)
-//                        .onDisappear {
-//                        }
-//                }.interactiveDismissDisabled(true)
             }
     }
     
-    func sendGetRequest() {
-        // 1. URL 생성
-        let url = URL(string: "https://raw.githubusercontent.com/moonsung-ho/mealtime-native/master/Shared/notice.json")!
-        
-        // 2. URL Request 생성
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        // 3. URLSession 생성
-        let session = URLSession.shared
-        
-        // 4. URLSessionDataTask 생성
-        let task = session.dataTask(with: request) { data, response, error in
-            // 5. 응답 처리
-            if error != nil {
-                //에러
-                print("error1")
-                return
+    func neisIsShit() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let startDate = dateFormatter.date(from: "2023-06-15T18:00:00+0900")
+        let endDate = dateFormatter.date(from: "2023-06-20T23:59:59+0900")
+        if Date().compare(startDate!) == .orderedDescending {
+            if Date().compare(endDate!) == .orderedAscending {
+                alertPresent.toggle()
             }
-            
-            guard let response = response as? HTTPURLResponse,
-                  (200..<300).contains(response.statusCode) else {
-                //에러
-                print("error2")
-                return
-            }
-            
-            guard let data = data else {
-                //에러
-                print("error3")
-                return
-            }
-
-            // 6. 데이터 처리
-            let result = JSON(data)
-            
-            print(result)
-            print("ddd")
-            alertPresent = result["notification"].boolValue
-            alertBody = result["body"].rawValue as! String
         }
-        // 7. 요청 실행
-        task.resume()
     }
     
     func schemeTransform(userInterfaceStyle:UIUserInterfaceStyle) -> ColorScheme {

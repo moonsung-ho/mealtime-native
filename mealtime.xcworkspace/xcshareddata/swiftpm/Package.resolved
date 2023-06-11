@@ -8,6 +8,15 @@
         "revision" : "b699017e13966e35c9388c8cc97151c8883dda1e",
         "version" : "1.1.0"
       }
+    },
+    {
+      "identity" : "neiswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/baekteun/NeiSwift.git",
+      "state" : {
+        "revision" : "23814e2228f4438f2f89e5fb82497dfeba351692",
+        "version" : "1.0.0"
+      }
     }
   ],
   "version" : 2

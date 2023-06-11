@@ -32,16 +32,18 @@ struct SchoolSettingsView: View {
     
     var body: some View {
         List(schools, id:\.self){ school in
-            HStack{
-                Button("\(school.name)\n\(Text(school.address).font(Font.footnote).foregroundColor(Color.gray))") {
-                    selectedSchool = school.name
-                    UserDefaults.standard.set(school.schoolCode, forKey: "schoolCode")
-                    UserDefaults.standard.set(school.officeCode, forKey: "officeCode")
-                    UserDefaults.standard.set(school.name, forKey: "schoolName")
-                    MealView().sendGetRequest()
-                }.onChange(of: selectedSchool, perform: {(value) in
-                    isNextPageActive = true
-                })
+            Group {
+                HStack{
+                    Button("\(school.name)\n\(Text(school.address).font(Font.footnote).foregroundColor(Color.gray))") {
+                        selectedSchool = school.name
+                        UserDefaults.standard.set(school.schoolCode, forKey: "schoolCode")
+                        UserDefaults.standard.set(school.officeCode, forKey: "officeCode")
+                        UserDefaults.standard.set(school.name, forKey: "schoolName")
+                        MealView().sendGetRequest()
+                    }.onChange(of: selectedSchool, perform: {(value) in
+                        isNextPageActive = true
+                    })
+                }
             }
         }
         .listStyle(.inset)
@@ -68,7 +70,7 @@ struct SchoolSettingsView: View {
 func sendGetRequest(stringToSearch: String) {
         schools = [School(name: "학교를 찾고 있어요", address: "곧 찾아서 가져올게요.", schoolCode: "", officeCode: "")]
         // 1. URL 생성
-    let url = URL(string: "https://open.neis.go.kr/hub/schoolInfo?Type=json&SCHUL_NM=\(stringToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)&KEY=a9a5367947564a1aa13e46ba545de634")!
+    let url = URL(string: "https://open.neis.go.kr/hub/schoolInfo?Type=json&SCHUL_NM=\(stringToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)&KEY=a9a5367947564a1aa13e46ba545de634&pSize=100")!
     
     
         
@@ -104,9 +106,7 @@ func sendGetRequest(stringToSearch: String) {
             schools = []
             if (schoolJSON["schoolInfo"][1]["row"].rawString()) != nil {
                 for i in 0..<schoolJSON["schoolInfo"][1]["row"].count {
-                    if i < 11 {
-                        schools.append(School(name:schoolJSON["schoolInfo"][1]["row"][i]["SCHUL_NM"].rawValue as! String, address:schoolJSON["schoolInfo"][1]["row"][i]["ORG_RDNMA"].rawValue as! String, schoolCode: schoolJSON["schoolInfo"][1]["row"][i]["SD_SCHUL_CODE"].rawValue as! String, officeCode: schoolJSON["schoolInfo"][1]["row"][i]["ATPT_OFCDC_SC_CODE"].rawValue as! String))
-                    }
+                    schools.append(School(name:schoolJSON["schoolInfo"][1]["row"][i]["SCHUL_NM"].rawValue as! String, address:schoolJSON["schoolInfo"][1]["row"][i]["ORG_RDNMA"].rawValue as! String, schoolCode: schoolJSON["schoolInfo"][1]["row"][i]["SD_SCHUL_CODE"].rawValue as! String, officeCode: schoolJSON["schoolInfo"][1]["row"][i]["ATPT_OFCDC_SC_CODE"].rawValue as! String))
                 }
             }
         }

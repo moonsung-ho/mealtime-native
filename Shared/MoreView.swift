@@ -18,7 +18,7 @@ struct MoreView: View {
         NavigationView {
             List {
                 if !appreviewed {
-                    Button("앱 리뷰 남기기") {
+                    Button("⭐️앱 리뷰 남기기") {
                         showSheet.toggle()
                     }
                     .alert("급식시간에 만족하셨나요?", isPresented: $showSheet) {
