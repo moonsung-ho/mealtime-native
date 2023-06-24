@@ -41,6 +41,17 @@
 		CBDDBAFC29E26B6500C6E0EA /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDDBAFA29E26B6400C6E0EA /* MoreView.swift */; };
 		CBDDBAFE29E26C9800C6E0EA /* SchoolSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDDBAFD29E26C9800C6E0EA /* SchoolSettingsView.swift */; };
 		CBDDBAFF29E26C9800C6E0EA /* SchoolSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDDBAFD29E26C9800C6E0EA /* SchoolSettingsView.swift */; };
+		CBFF9B0F2A46ED620010350B /* mealtimeAppclipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF9B0E2A46ED620010350B /* mealtimeAppclipApp.swift */; };
+		CBFF9B112A46ED620010350B /* mealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF9B102A46ED620010350B /* mealView.swift */; };
+		CBFF9B132A46ED640010350B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBFF9B122A46ED640010350B /* Assets.xcassets */; };
+		CBFF9B162A46ED640010350B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBFF9B152A46ED640010350B /* Preview Assets.xcassets */; };
+		CBFF9B1B2A46ED640010350B /* mealtimeAppclip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = CBFF9B0C2A46ED620010350B /* mealtimeAppclip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CBFF9B212A46EFC10010350B /* SchoolSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF9B202A46EFC10010350B /* SchoolSettingsView.swift */; };
+		CBFF9B5B2A46F80D0010350B /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = CBFF9B5A2A46F80D0010350B /* SwiftyJSON */; };
+		CBFF9B5D2A46F81E0010350B /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = CBFF9B5C2A46F81E0010350B /* SwiftyJSON */; };
+		CBFF9B632A46F91B0010350B /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = CBFF9B622A46F91B0010350B /* AlertToast */; };
+		CBFF9B652A46F9240010350B /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = CBFF9B642A46F9240010350B /* AlertToast */; };
+		CBFF9B672A46FB230010350B /* DebouncedOnChange in Frameworks */ = {isa = PBXBuildFile; productRef = CBFF9B662A46FB230010350B /* DebouncedOnChange */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +69,28 @@
 			remoteGlobalIDString = CBCB705028AF5DB0003DF9D6;
 			remoteInfo = "mealtime (macOS)";
 		};
+		CBFF9B192A46ED640010350B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBCB703F28AF5DAA003DF9D6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CBFF9B0B2A46ED620010350B;
+			remoteInfo = mealtimeAppclip;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CBFF9B1C2A46ED640010350B /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				CBFF9B1B2A46ED640010350B /* mealtimeAppclip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		854F8D47772DD72723F01C46 /* Pods-mealtime (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mealtime (iOS).debug.xcconfig"; path = "Target Support Files/Pods-mealtime (iOS)/Pods-mealtime (iOS).debug.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +120,33 @@
 		CBD1240929EBE540009D91D2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		CBDDBAFA29E26B6400C6E0EA /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		CBDDBAFD29E26C9800C6E0EA /* SchoolSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSettingsView.swift; sourceTree = "<group>"; };
+		CBFF9B0C2A46ED620010350B /* mealtimeAppclip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mealtimeAppclip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B0E2A46ED620010350B /* mealtimeAppclipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mealtimeAppclipApp.swift; sourceTree = "<group>"; };
+		CBFF9B102A46ED620010350B /* mealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mealView.swift; sourceTree = "<group>"; };
+		CBFF9B122A46ED640010350B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CBFF9B152A46ED640010350B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CBFF9B172A46ED640010350B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBFF9B182A46ED640010350B /* mealtimeAppclip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mealtimeAppclip.entitlements; sourceTree = "<group>"; };
+		CBFF9B202A46EFC10010350B /* SchoolSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSettingsView.swift; sourceTree = "<group>"; };
+		CBFF9B222A46F1600010350B /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B262A46F3D50010350B /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B292A46F3DA0010350B /* Pods_mealtime__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_mealtime__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B2A2A46F3DA0010350B /* Pods_mealtime__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_mealtime__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B2F2A46F3E00010350B /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B322A46F3E90010350B /* AlertToast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlertToast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B352A46F7770010350B /* AlertToast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlertToast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B362A46F7770010350B /* GoogleAppMeasurement.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurement.xcframework; path = Pods/GoogleAppMeasurement/Frameworks/GoogleAppMeasurement.xcframework; sourceTree = "<group>"; };
+		CBFF9B372A46F7770010350B /* GoogleAppMeasurementIdentitySupport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurementIdentitySupport.xcframework; path = Pods/GoogleAppMeasurement/Frameworks/GoogleAppMeasurementIdentitySupport.xcframework; sourceTree = "<group>"; };
+		CBFF9B382A46F7770010350B /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
+		CBFF9B392A46F7770010350B /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B3A2A46F7770010350B /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B3B2A46F7770010350B /* Pods_mealtime__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_mealtime__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B3C2A46F7770010350B /* Pods_mealtime__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_mealtime__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B3D2A46F7770010350B /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B3E2A46F7770010350B /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B3F2A46F7770010350B /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFF9B402A46F7770010350B /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
+		CBFF9B5E2A46F8600010350B /* AlertToast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlertToast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D1F95EB078103D20A52B63 /* Pods-mealtime (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mealtime (macOS).debug.xcconfig"; path = "Target Support Files/Pods-mealtime (macOS)/Pods-mealtime (macOS).debug.xcconfig"; sourceTree = "<group>"; };
 		E8859D7D4135E38447547AF4 /* Pods_mealtime__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mealtime__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1F0B5259163C572BA1B28BC /* Pods-mealtime (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mealtime (iOS).release.xcconfig"; path = "Target Support Files/Pods-mealtime (iOS)/Pods-mealtime (iOS).release.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +157,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBFF9B5B2A46F80D0010350B /* SwiftyJSON in Frameworks */,
+				CBFF9B632A46F91B0010350B /* AlertToast in Frameworks */,
 				8D7B5E56725D8429DB39C774 /* Pods_mealtime__iOS_.framework in Frameworks */,
 				CB638AB92A23BC090097796E /* CombineNeiSwift in Frameworks */,
 				CBAC8CFD2A19F9A700EE1AD6 /* DebouncedOnChange in Frameworks */,
@@ -128,12 +189,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CBFF9B092A46ED620010350B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBFF9B652A46F9240010350B /* AlertToast in Frameworks */,
+				CBFF9B672A46FB230010350B /* DebouncedOnChange in Frameworks */,
+				CBFF9B5D2A46F81E0010350B /* SwiftyJSON in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		6AF858BEDFC4A8BD00300F74 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CBFF9B5E2A46F8600010350B /* AlertToast.framework */,
+				CBFF9B352A46F7770010350B /* AlertToast.framework */,
+				CBFF9B362A46F7770010350B /* GoogleAppMeasurement.xcframework */,
+				CBFF9B372A46F7770010350B /* GoogleAppMeasurementIdentitySupport.xcframework */,
+				CBFF9B382A46F7770010350B /* GoogleMobileAds.xcframework */,
+				CBFF9B392A46F7770010350B /* GoogleUtilities.framework */,
+				CBFF9B3A2A46F7770010350B /* nanopb.framework */,
+				CBFF9B3B2A46F7770010350B /* Pods_mealtime__iOS_.framework */,
+				CBFF9B3C2A46F7770010350B /* Pods_mealtime__macOS_.framework */,
+				CBFF9B3D2A46F7770010350B /* FBLPromises.framework */,
+				CBFF9B3E2A46F7770010350B /* SwiftyJSON.framework */,
+				CBFF9B3F2A46F7770010350B /* SwiftyJSON.framework */,
+				CBFF9B402A46F7770010350B /* UserMessagingPlatform.xcframework */,
+				CBFF9B322A46F3E90010350B /* AlertToast.framework */,
+				CBFF9B2F2A46F3E00010350B /* SwiftyJSON.framework */,
+				CBFF9B292A46F3DA0010350B /* Pods_mealtime__iOS_.framework */,
+				CBFF9B2A2A46F3DA0010350B /* Pods_mealtime__macOS_.framework */,
+				CBFF9B262A46F3D50010350B /* SwiftyJSON.framework */,
+				CBFF9B222A46F1600010350B /* SwiftyJSON.framework */,
 				987E9CAC0DF980BB92316EA2 /* Pods_mealtime__iOS_.framework */,
 				E8859D7D4135E38447547AF4 /* Pods_mealtime__macOS_.framework */,
 			);
@@ -149,6 +239,7 @@
 				CBCB705228AF5DB0003DF9D6 /* macOS */,
 				CBCB705B28AF5DB0003DF9D6 /* Tests iOS */,
 				CBCB706728AF5DB0003DF9D6 /* Tests macOS */,
+				CBFF9B0D2A46ED620010350B /* mealtimeAppclip */,
 				CBCB704C28AF5DB0003DF9D6 /* Products */,
 				E4F47C9A99BF20B75E45E359 /* Pods */,
 				6AF858BEDFC4A8BD00300F74 /* Frameworks */,
@@ -181,6 +272,7 @@
 				CBCB705128AF5DB0003DF9D6 /* mealtime.app */,
 				CBCB705828AF5DB0003DF9D6 /* Tests iOS.xctest */,
 				CBCB706428AF5DB0003DF9D6 /* Tests macOS.xctest */,
+				CBFF9B0C2A46ED620010350B /* mealtimeAppclip.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -220,6 +312,28 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
+		CBFF9B0D2A46ED620010350B /* mealtimeAppclip */ = {
+			isa = PBXGroup;
+			children = (
+				CBFF9B0E2A46ED620010350B /* mealtimeAppclipApp.swift */,
+				CBFF9B102A46ED620010350B /* mealView.swift */,
+				CBFF9B202A46EFC10010350B /* SchoolSettingsView.swift */,
+				CBFF9B122A46ED640010350B /* Assets.xcassets */,
+				CBFF9B172A46ED640010350B /* Info.plist */,
+				CBFF9B182A46ED640010350B /* mealtimeAppclip.entitlements */,
+				CBFF9B142A46ED640010350B /* Preview Content */,
+			);
+			path = mealtimeAppclip;
+			sourceTree = "<group>";
+		};
+		CBFF9B142A46ED640010350B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CBFF9B152A46ED640010350B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		E4F47C9A99BF20B75E45E359 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,10 +357,12 @@
 				CBCB704828AF5DB0003DF9D6 /* Frameworks */,
 				CBCB704928AF5DB0003DF9D6 /* Resources */,
 				02D4937C85F832011794A656 /* [CP] Embed Pods Frameworks */,
+				CBFF9B1C2A46ED640010350B /* Embed App Clips */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CBFF9B1A2A46ED640010350B /* PBXTargetDependency */,
 			);
 			name = "mealtime (iOS)";
 			packageProductDependencies = (
@@ -254,6 +370,8 @@
 				CB638AB62A23BC090097796E /* AsyncNeiSwift */,
 				CB638AB82A23BC090097796E /* CombineNeiSwift */,
 				CB638ABA2A23BC090097796E /* NeiSwift */,
+				CBFF9B5A2A46F80D0010350B /* SwiftyJSON */,
+				CBFF9B622A46F91B0010350B /* AlertToast */,
 			);
 			productName = "mealtime (iOS)";
 			productReference = CBCB704B28AF5DB0003DF9D6 /* mealtime.app */;
@@ -314,6 +432,28 @@
 			productReference = CBCB706428AF5DB0003DF9D6 /* Tests macOS.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		CBFF9B0B2A46ED620010350B /* mealtimeAppclip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBFF9B1F2A46ED640010350B /* Build configuration list for PBXNativeTarget "mealtimeAppclip" */;
+			buildPhases = (
+				CBFF9B082A46ED620010350B /* Sources */,
+				CBFF9B092A46ED620010350B /* Frameworks */,
+				CBFF9B0A2A46ED620010350B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mealtimeAppclip;
+			packageProductDependencies = (
+				CBFF9B5C2A46F81E0010350B /* SwiftyJSON */,
+				CBFF9B642A46F9240010350B /* AlertToast */,
+				CBFF9B662A46FB230010350B /* DebouncedOnChange */,
+			);
+			productName = mealtimeAppclip;
+			productReference = CBFF9B0C2A46ED620010350B /* mealtimeAppclip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -321,7 +461,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					CBCB704A28AF5DB0003DF9D6 = {
@@ -338,6 +478,9 @@
 						CreatedOnToolsVersion = 13.4.1;
 						TestTargetID = CBCB705028AF5DB0003DF9D6;
 					};
+					CBFF9B0B2A46ED620010350B = {
+						CreatedOnToolsVersion = 14.3;
+					};
 				};
 			};
 			buildConfigurationList = CBCB704228AF5DAA003DF9D6 /* Build configuration list for PBXProject "mealtime" */;
@@ -352,6 +495,8 @@
 			packageReferences = (
 				CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */,
 				CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */,
+				CBFF9B592A46F80D0010350B /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = CBCB704C28AF5DB0003DF9D6 /* Products */;
 			projectDirPath = "";
@@ -361,6 +506,7 @@
 				CBCB705028AF5DB0003DF9D6 /* mealtime (macOS) */,
 				CBCB705728AF5DB0003DF9D6 /* Tests iOS */,
 				CBCB706328AF5DB0003DF9D6 /* Tests macOS */,
+				CBFF9B0B2A46ED620010350B /* mealtimeAppclip */,
 			);
 		};
 /* End PBXProject section */
@@ -397,6 +543,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBFF9B0A2A46ED620010350B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBFF9B162A46ED640010350B /* Preview Assets.xcassets in Resources */,
+				CBFF9B132A46ED640010350B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +689,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CBFF9B082A46ED620010350B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBFF9B112A46ED620010350B /* mealView.swift in Sources */,
+				CBFF9B0F2A46ED620010350B /* mealtimeAppclipApp.swift in Sources */,
+				CBFF9B212A46EFC10010350B /* SchoolSettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -546,6 +711,11 @@
 			isa = PBXTargetDependency;
 			target = CBCB705028AF5DB0003DF9D6 /* mealtime (macOS) */;
 			targetProxy = CBCB706528AF5DB0003DF9D6 /* PBXContainerItemProxy */;
+		};
+		CBFF9B1A2A46ED640010350B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CBFF9B0B2A46ED620010350B /* mealtimeAppclip */;
+			targetProxy = CBFF9B192A46ED640010350B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -665,6 +835,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 854F8D47772DD72723F01C46 /* Pods-mealtime (iOS).debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -703,6 +874,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F1F0B5259163C572BA1B28BC /* Pods-mealtime (iOS).release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -867,6 +1039,83 @@
 			};
 			name = Release;
 		};
+		CBFF9B1D2A46ED640010350B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = mealtimeAppclip/mealtimeAppclip.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"mealtimeAppclip/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = mealtimeAppclip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = mealtime;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sungho0205.geupsik.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CBFF9B1E2A46ED640010350B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = mealtimeAppclip/mealtimeAppclip.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"mealtimeAppclip/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = mealtimeAppclip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = mealtime;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sungho0205.geupsik.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -915,6 +1164,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		CBFF9B1F2A46ED640010350B /* Build configuration list for PBXNativeTarget "mealtimeAppclip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBFF9B1D2A46ED640010350B /* Debug */,
+				CBFF9B1E2A46ED640010350B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -929,6 +1187,22 @@
 		CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Tunous/DebouncedOnChange.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		CBFF9B592A46F80D0010350B /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast#swift-package-manager";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -953,6 +1227,31 @@
 			productName = NeiSwift;
 		};
 		CBAC8CFC2A19F9A700EE1AD6 /* DebouncedOnChange */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */;
+			productName = DebouncedOnChange;
+		};
+		CBFF9B5A2A46F80D0010350B /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBFF9B592A46F80D0010350B /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		CBFF9B5C2A46F81E0010350B /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBFF9B592A46F80D0010350B /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		CBFF9B622A46F91B0010350B /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+		CBFF9B642A46F9240010350B /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+		CBFF9B662A46FB230010350B /* DebouncedOnChange */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */;
 			productName = DebouncedOnChange;

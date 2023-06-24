@@ -52,6 +52,11 @@ struct TimeTableView: View {
                 }
                 AdBannerView()
             }.navigationBarTitle("시간표")
+                .toolbar {
+                ShareLink(item: timeTable.joined(separator: ", ")) {
+                    Image(systemName: "square.and.arrow.up")
+                }
+            }
         }
     }
     

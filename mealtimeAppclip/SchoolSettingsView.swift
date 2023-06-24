@@ -83,15 +83,8 @@ struct SchoolSettingsView: View {
         .onChange(of: searchString, debounceTime: .milliseconds(400)) { (value) in
             sendGetRequest(stringToSearch: searchString, region: schoolFilter)
         }
-        .sheet(isPresented: $isNextPageActive) {
-            NavigationView {
-                GradeClassView().navigationTitle(selectedSchool).toolbar{
-                    Button("완료") {
-                        isNextPageActive = false
-                        presentation.wrappedValue.dismiss()
-                    }
-                }
-            }
+        .onChange(of: isNextPageActive) {(value) in
+            presentation.wrappedValue.dismiss()
         }
     }
     

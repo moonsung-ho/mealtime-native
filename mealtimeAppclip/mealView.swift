@@ -74,7 +74,6 @@ struct MealView: View {
                                     needToDisplaySchoolSettingsModal = false
                                 }
                         }.interactiveDismissDisabled(true)
-                    AdBannerView()
                 }.onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
                     ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
                         if status == .authorized {

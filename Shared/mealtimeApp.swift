@@ -97,21 +97,21 @@ struct mealtimeApp: App {
 //                .toast(isPresenting: $alertPresent, duration: 10, tapToDismiss: true) {
 //                    AlertToast(displayMode: .banner(.pop), type: .error(Color.red), title: "공지사항이 있어요.", subTitle: alertBody)
 //                }
-                .sheet(isPresented: $settingsPresented) {
-                    NavigationView {
-                        SchoolSettingsView()
-                            .toolbar {
-                            ToolbarItem(placement: .navigationBarLeading) {
-                                VStack(alignment: .leading) {
-                                    Text("학교 설정하기").font(.title2).bold()
-                                    Text("다니는 학교를 검색하고 선택해 주세요.").font(Font.footnote).foregroundColor(Color(UIColor.secondaryLabel))
-                                }
-                            }
-                        }
-                    }.padding(.top, 10).interactiveDismissDisabled(true)
-                        .onDisappear {
-                        }
-                }.interactiveDismissDisabled(true)
+//                .sheet(isPresented: $settingsPresented) {
+//                    NavigationView {
+//                        SchoolSettingsView()
+//                            .toolbar {
+//                            ToolbarItem(placement: .navigationBarLeading) {
+//                                VStack(alignment: .leading) {
+//                                    Text("학교 설정하기").font(.title2).bold()
+//                                    Text("다니는 학교를 검색하고 선택해 주세요.").font(Font.footnote).foregroundColor(Color(UIColor.secondaryLabel))
+//                                }
+//                            }
+//                        }
+//                    }.padding(.top, 10).interactiveDismissDisabled(true)
+//                        .onDisappear {
+//                        }
+//                }.interactiveDismissDisabled(true)
                 .sheet(isPresented: $alertPresent) {
                     NavigationView {
                         VStack(alignment:.center){

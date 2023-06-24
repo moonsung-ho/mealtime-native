@@ -4,20 +4,26 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>mealtime (iOS).xcscheme_^#shared#^_</key>
+		<key>Playground (Playground) 1.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>13</integer>
+			<integer>15</integer>
 		</dict>
-		<key>mealtime (macOS).xcscheme_^#shared#^_</key>
+		<key>Playground (Playground) 2.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>16</integer>
 		</dict>
-		<key>mealtimeAppclip.xcscheme_^#shared#^_</key>
+		<key>Playground (Playground).xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>14</integer>
 		</dict>
 	</dict>
 </dict>
