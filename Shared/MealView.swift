@@ -86,7 +86,7 @@ struct MealView: View {
                     })
                 }.navigationBarTitle("급식")
                 .toolbar {
-                    ShareLink(item: meals.joined(separator: ", ")) {
+                    ShareLink(item: "\(formattedDate)의 급식:\(meals.joined(separator: ", "))") {
                         Image(systemName: "square.and.arrow.up")
                     }
                 }
