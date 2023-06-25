@@ -78,6 +78,7 @@ struct mealtimeApp: App {
                                 isFirstLaunch.toggle()
                                 settingsPresented = true
                                 needToDisplaySchoolSettingsModal = true
+                                MealView().needToDisplaySchoolSettingsModal = true
                             }) {
                                 Text("시작하기")
                                     .padding(.horizontal, 35)

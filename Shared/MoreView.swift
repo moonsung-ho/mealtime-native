@@ -49,6 +49,9 @@ struct MoreView: View {
                     GradeClassView()
                 }
                 Toggle("오후 8시 이후 내일 급식/시간표 표시", isOn: $after7Display)
+                NavigationLink("공지사항") {
+                    NoticeView()
+                }
             }.navigationBarTitle("더보기").navigationBarTitleDisplayMode(.large)
             AdBannerView()
         }

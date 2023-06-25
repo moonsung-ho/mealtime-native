@@ -9,7 +9,7 @@ struct MealView: View {
     @State private var selectedDate = Date()
     @AppStorage("after7Display") var after7Display: Bool = false
     @State var refreshit: Bool = false
-    @AppStorage("needToDisplaySchoolSettingsModal") var needToDisplaySchoolSettingsModal: Bool = true
+    @AppStorage("needToDisplaySchoolSettingsModal") var needToDisplaySchoolSettingsModal: Bool = false
     //    @State var needToDisplaySchoolSettingsModal: Bool = false
     
     var body: some View {
