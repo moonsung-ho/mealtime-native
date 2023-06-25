@@ -148,8 +148,11 @@
 		CBFF9B3F2A46F7770010350B /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBFF9B402A46F7770010350B /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = Pods/GoogleUserMessagingPlatform/Frameworks/Release/UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
 		CBFF9B5E2A46F8600010350B /* AlertToast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlertToast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+<<<<<<< HEAD
 		CBFF9B6A2A4806920010350B /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
+=======
 		D9776C462A47135E00A54E07 /* mealtime (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "mealtime (iOS).entitlements"; sourceTree = "<group>"; };
+>>>>>>> d111772523d9302a7e0af4a762a3e3d262989118
 		D9D1F95EB078103D20A52B63 /* Pods-mealtime (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mealtime (macOS).debug.xcconfig"; path = "Target Support Files/Pods-mealtime (macOS)/Pods-mealtime (macOS).debug.xcconfig"; sourceTree = "<group>"; };
 		E8859D7D4135E38447547AF4 /* Pods_mealtime__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mealtime__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1F0B5259163C572BA1B28BC /* Pods-mealtime (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mealtime (iOS).release.xcconfig"; path = "Target Support Files/Pods-mealtime (iOS)/Pods-mealtime (iOS).release.xcconfig"; sourceTree = "<group>"; };
