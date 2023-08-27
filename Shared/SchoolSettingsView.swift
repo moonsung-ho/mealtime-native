@@ -50,6 +50,7 @@ struct SchoolSettingsView: View {
                         UserDefaults.standard.set(school.name, forKey: "schoolName")
                         MealView().sendGetRequest()
                     }.onChange(of: selectedSchool, perform: {(value) in
+                        HapticManager.instance.selectionChanged()
                         isNextPageActive = true
                     })
                 }
@@ -123,7 +124,8 @@ struct SchoolSettingsView: View {
         let task = session.dataTask(with: request) { data, response, error in
             // 5. 응답 처리
             if error != nil {
-                schools = [School(name: "에러가 발생했어요.", address: "문제가 지속될 경우 개발자에게 문의하세요.", schoolCode: "", officeCode: "")]
+                schools = [School(name: "인터넷 연결을 확인해 보세요.", address: "문제가 지속될 경우 개발자에게 문의하세요.", schoolCode: "", officeCode: "")]
+                HapticManager.instance.notification(type: .error)
                 return
             }
             

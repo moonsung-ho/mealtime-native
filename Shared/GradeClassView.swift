@@ -57,6 +57,7 @@ struct GradeClassView: View {
                     }
                 }
                 .onChange(of: selectedGrade) { newValue in
+                    HapticManager.instance.selectionChanged()
                     UserDefaults.standard.set(String(selectedGrade), forKey: "grade")
                     sendGetRequest(selectedGrade: selectedGrade)
                 }.onAppear {
@@ -76,6 +77,7 @@ struct GradeClassView: View {
                         }
                     }
                 }.onChange(of: selectedClass) { newValue in
+                    HapticManager.instance.selectionChanged()
                     UserDefaults.standard.set(String(selectedClass), forKey: "class")
                     alertPresent.toggle()
                     HapticManager.instance.notification(type: .success)
@@ -111,11 +113,13 @@ struct GradeClassView: View {
             // 5. 응답 처리
             if error != nil {
                 //에러
+                HapticManager.instance.notification(type: .error)
                 return
             }
             
             guard let response = response as? HTTPURLResponse,
                   (200..<300).contains(response.statusCode) else {
+                HapticManager.instance.notification(type: .error)
                 return
             }
             

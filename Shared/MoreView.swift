@@ -42,6 +42,9 @@ struct MoreView: View {
                 NavigationLink("내 설정 확인하기") {
                     InfoView().navigationBarTitle("내 설정")
                 }
+                NavigationLink("공지사항") {
+                    NoticeView()
+                }
                 NavigationLink("학교 설정") {
                     SchoolSettingsView().navigationBarTitle("학교 설정")
                 }
@@ -49,12 +52,9 @@ struct MoreView: View {
                     AllergySettingsView().navigationBarTitle("알레르기 설정")
                 }
                 NavigationLink("학년/반 설정") {
-                    GradeClassView()
+                    GradeClassView().navigationBarTitle("학년/반 설정")
                 }
                 Toggle("오후 8시 이후 내일 급식/시간표 표시", isOn: $after7Display)
-                NavigationLink("공지사항") {
-                    NoticeView()
-                }
             }.navigationBarTitle("더보기").navigationBarTitleDisplayMode(.large)
             AdBannerView()
         }

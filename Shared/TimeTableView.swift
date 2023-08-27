@@ -72,7 +72,9 @@ struct TimeTableView: View {
                         let Formatter = DateFormatter()
                         Formatter.dateFormat = "M월 d일"
                         fancyDate = Formatter.string(from: selectedDate)
-                    }
+                    }.simultaneousGesture(TapGesture().onEnded() {
+                        HapticManager.instance.impact(style: .medium)
+                    })
                 }
         }
     }
@@ -116,7 +118,8 @@ struct TimeTableView: View {
         let task = session.dataTask(with: request) { data, response, error in
             // 5. 응답 처리
             if error != nil {
-                timeTable = ["문제가 발생했어요. 더보기 탭 > 내 설정 확인하기에서 개발자에게 문의해 보세요."]
+                timeTable = ["인터넷 연결을 확인해 보세요."]
+                HapticManager.instance.notification(type: .error)
                 return
             }
             
