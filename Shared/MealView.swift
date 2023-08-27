@@ -7,8 +7,10 @@ struct MealView: View {
     @State var meals: [String] = []
     @State var meal: String = ""
     @State private var selectedDate = Date()
+    @State var loading: Bool = false
+    @State var schoolName:String = ""
+    @State var fancyDate: String = ""
     @AppStorage("after7Display") var after7Display: Bool = false
-    @State var refreshit: Bool = false
     @AppStorage("needToDisplaySchoolSettingsModal") var needToDisplaySchoolSettingsModal: Bool = false
     //    @State var needToDisplaySchoolSettingsModal: Bool = false
     
@@ -23,15 +25,23 @@ struct MealView: View {
                         "날짜 선택",
                         selection: $selectedDate,
                         displayedComponents: [.date]
-                    )
+                    ).environment(\.locale, Locale.init(identifier: "ko"))
                     .labelsHidden()
                     .datePickerStyle(.compact)
                     .onChange(of: selectedDate, perform: { (value) in
                         sendGetRequest()
+                        HapticManager.instance.selectionChanged()
                     }).padding(10)
                     Button("\(Image(systemName: "chevron.forward"))"){
                         selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate)!
                     }.buttonStyle(.bordered)
+                }
+                if loading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle()) // 로딩 바 스타일 설정
+                        .scaleEffect(2) // 크기 조절
+                        .padding(.top, 20)
+                        .padding(.bottom, 20)
                 }
                 List(meals, id: \.self) { meal in
                     if meal.contains("!"){Text(meal.filter { !"!".contains($0) }).foregroundColor(Color.red)}
@@ -42,6 +52,8 @@ struct MealView: View {
                 .onAppear {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyyMMdd"
+                    dateFormatter.dateStyle = .long
+                    dateFormatter.locale = Locale(identifier: "ko_kr")
                     let calendar = Calendar.current
                     let hour = calendar.component(.hour, from: Date())
                     if after7Display == true {
@@ -78,16 +90,18 @@ struct MealView: View {
                 }.onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
                     ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
                         if status == .authorized {
-                            //print("인증됨")
                         }
                         else {
-                            //print("노노")
                         }
                     })
                 }.navigationBarTitle("급식")
                 .toolbar {
-                    ShareLink(item: "\(formattedDate)의 급식:\(meals.joined(separator: ", "))") {
+                    ShareLink(item: "\(fancyDate)의 \(schoolName) 급식: \(meals.joined(separator: ", "))") {
                         Image(systemName: "square.and.arrow.up")
+                    }.onAppear {
+                        let Formatter = DateFormatter()
+                        Formatter.dateFormat = "M월 d일"
+                        fancyDate = Formatter.string(from: selectedDate)
                     }
                 }
             }
@@ -100,12 +114,13 @@ struct MealView: View {
         }
         
         func sendGetRequest() {
-            meals = ["급식을 가져오고 있어요."]
+            loading.toggle()
             let schoolCode: String? = (UserDefaults.standard.object(forKey: "schoolCode") as? String)
             let officeCode: String? = UserDefaults.standard.object(forKey: "officeCode") as? String
             let allergy: String? = UserDefaults.standard.object(forKey: "allergy") as? String
+            schoolName = UserDefaults.standard.object(forKey: "schoolName") as? String ?? ""
             // 1. URL 생성
-            let url = URL(string: "https://open.neis.go.kr/hub/mealServiceDietInfo?Type=json&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=\(officeCode ?? "")&SD_SCHUL_CODE=\(schoolCode ?? "")&MLSV_YMD=\(formattedDate)&KEY=a9a5367947564a1aa13e46ba545de634")!
+            let url = URL(string: "https://open.neis.go.kr/hub/mealServiceDietInfo?Type=json&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=\(officeCode ?? "")&SD_SCHUL_CODE=\(schoolCode ?? "")&MLSV_YMD=\(formattedDate)&KEY=a9a5367947564a1aa13e46ba545de634&MMEAL_SC_CODE=2")!
             
             // 2. URL Request 생성
             var request = URLRequest(url: url)
@@ -162,6 +177,7 @@ struct MealView: View {
             }
             // 7. 요청 실행
             task.resume()
+            loading.toggle()
         }
     }
     

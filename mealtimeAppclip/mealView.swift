@@ -24,6 +24,7 @@ struct MealView: View {
                         selection: $selectedDate,
                         displayedComponents: [.date]
                     )
+                    .environment(\.locale, Locale.init(identifier: "ko"))
                     .labelsHidden()
                     .datePickerStyle(.compact)
                     .onChange(of: selectedDate, perform: { (value) in

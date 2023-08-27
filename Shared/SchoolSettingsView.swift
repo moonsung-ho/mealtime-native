@@ -29,9 +29,17 @@ struct SchoolSettingsView: View {
     @State var isNextPageActive = false
     @State var selectedSchool:String = "없음"
     @State var schoolFilter:String = ""
+    @State var loading:Bool = false
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
+        if loading {
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle()) // 로딩 바 스타일 설정
+                .scaleEffect(2) // 크기 조절
+                .padding(.top, 20)
+                .padding(.bottom, 20)
+        }
         List(schools, id:\.self){ school in
             Group {
                 HStack{
@@ -78,9 +86,11 @@ struct SchoolSettingsView: View {
             }
         }
         .onChange(of: schoolFilter){(value) in
+            loading.toggle()
             sendGetRequest(stringToSearch: searchString, region: schoolFilter)
         }
         .onChange(of: searchString, debounceTime: .milliseconds(400)) { (value) in
+            loading.toggle()
             sendGetRequest(stringToSearch: searchString, region: schoolFilter)
         }
         .sheet(isPresented: $isNextPageActive) {
@@ -96,7 +106,7 @@ struct SchoolSettingsView: View {
     }
     
     func sendGetRequest(stringToSearch: String, region: String) {
-        schools = [School(name: "학교를 찾고 있어요", address: "곧 찾아서 가져올게요.", schoolCode: "", officeCode: "")]
+        schools = []
         // 1. URL 생성
     let url = URL(string: "https://open.neis.go.kr/hub/schoolInfo?Type=json&SCHUL_NM=\(stringToSearch.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)&KEY=a9a5367947564a1aa13e46ba545de634&pSize=20&LCTN_SC_NM=\(region.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)")!
     
@@ -141,6 +151,7 @@ struct SchoolSettingsView: View {
         
         // 7. 요청 실행
         task.resume()
+        loading.toggle()
     }
 }
 

@@ -20,6 +20,7 @@ struct mealtimeApp: App {
     @State var alertBody = ""
 //    @State private var isFirstLaunch = true
     @AppStorage("needToDisplaySchoolSettingsModal") var needToDisplaySchoolSettingsModal: Bool = false
+    let Haptic = HapticManager.instance
     
     var body: some Scene {
         WindowGroup {
@@ -27,11 +28,16 @@ struct mealtimeApp: App {
                 MealView().tabItem { Image(systemName: "fork.knife");Text("급식") }.tag(1)
                 TimeTableView().tabItem { Image(systemName: "calendar");Text("시간표") }.tag(2)
                 MoreView().tabItem { Image(systemName: "ellipsis.circle.fill");Text("더보기")}.tag(3)
-            }.accentColor(.yellow)
-            .onAppear{
+            }
+            .accentColor(.yellow)
+            .onAppear {
                 UITabBar.appearance().backgroundColor = UIColor.systemBackground
-                
                 neisIsShit()
+            }
+            .onChange(of: selection) {_ in
+                //Haptic.notification(type: .success)
+                Haptic.impact(style: .rigid)
+                print("haptic")
             }
             .sheet(isPresented: $isFirstLaunch) {
                     VStack {

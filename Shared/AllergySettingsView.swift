@@ -39,6 +39,7 @@ struct AllergySettingsView: View {
             }
             .onChange(of: selectedAllergy) { newValue in
                 UserDefaults.standard.set(String(selectedAllergy), forKey: "allergy")
+                HapticManager.instance.notification(type: .success)
             }.onAppear{
                 if UserDefaults.standard.string(forKey: "allergy") == nil {
                     UserDefaults.standard.set("0", forKey: "allergy")

@@ -5,6 +5,11 @@ struct TimeTableView: View {
     @State var timeTable: [String] = []
     @State private var selectedDate = Date()
     @State var schoolForm = "els"
+    @State var loading: Bool = false
+    @State var classN: String? = ""
+    @State var grade: String? = ""
+    @State var fancyDate: String = ""
+    @State var schoolName: String? = ""
     @AppStorage("after7Display") var after7Display: Bool = false
     
     var body: some View {
@@ -18,15 +23,23 @@ struct TimeTableView: View {
                         "날짜 선택",
                         selection: $selectedDate,
                         displayedComponents: [.date]
-                    )
+                    ).environment(\.locale, Locale.init(identifier: "ko"))
                     .labelsHidden()
                     .datePickerStyle(.compact)
                     .onChange(of: selectedDate, perform: { (value) in
                         sendGetRequest()
+                        HapticManager.instance.selectionChanged()
                     }).padding(10)
                     Button("\(Image(systemName: "chevron.forward"))"){
                         selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate)!
                     }.buttonStyle(.bordered)
+                }
+                if loading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle()) // 로딩 바 스타일 설정
+                        .scaleEffect(2) // 크기 조절
+                        .padding(.top, 20)
+                        .padding(.bottom, 20)
                 }
                 List(timeTable, id: \.self) { lesson in
                     if lesson.contains("!"){Text(lesson.filter { !"!".contains($0) }).foregroundColor(Color.red)}
@@ -53,8 +66,12 @@ struct TimeTableView: View {
                 AdBannerView()
             }.navigationBarTitle("시간표")
                 .toolbar {
-                    ShareLink(item: "\(formattedDate)의 시간표:\(timeTable.joined(separator: ", "))") {
+                    ShareLink(item: "\(fancyDate)의 \(schoolName ?? "") \(grade ?? "알 수 없는")학년 \(classN ?? "알 수 없는")반 시간표: \(timeTable.joined(separator: ", "))") {
                         Image(systemName: "square.and.arrow.up")
+                    }.onAppear {
+                        let Formatter = DateFormatter()
+                        Formatter.dateFormat = "M월 d일"
+                        fancyDate = Formatter.string(from: selectedDate)
                     }
                 }
         }
@@ -67,11 +84,13 @@ struct TimeTableView: View {
         }
     
     func sendGetRequest() {
-        timeTable = ["시간표를 가져오고 있어요."]
+        loading.toggle()
+        timeTable = []
         let schoolCode: String? = (UserDefaults.standard.object(forKey: "schoolCode") as? String)
         let officeCode: String? = UserDefaults.standard.object(forKey: "officeCode") as? String
-        let classN: String? = UserDefaults.standard.object(forKey: "class") as? String
-        let grade: String? = UserDefaults.standard.object(forKey: "grade") as? String
+        classN = UserDefaults.standard.object(forKey: "class") as? String
+        grade = UserDefaults.standard.object(forKey: "grade") as? String
+        schoolName = UserDefaults.standard.object(forKey: "schoolName") as? String
         if schoolCode != nil {
             if ((UserDefaults.standard.object(forKey: "schoolName") as? String)!.contains("초등학교")) {
                 schoolForm = "els"
@@ -124,7 +143,6 @@ struct TimeTableView: View {
 //            }
             //meal = meal.filter { !"0123456789. ".contains($0) }
             //meal = meal.filter { !"()".contains($0) }
-            timeTable.remove(at: 0)
             for (_, lesson) in timeTableJSON["\(schoolForm)Timetable"][1]["row"].enumerated() {
                 timeTable.append("\(lesson.1["PERIO"].rawValue as! String): \(lesson.1["ITRT_CNTNT"].rawValue as! String)")
             }
@@ -141,6 +159,7 @@ struct TimeTableView: View {
         
         // 7. 요청 실행
         task.resume()
+        loading.toggle()
     }
 }
 

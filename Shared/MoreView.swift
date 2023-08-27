@@ -8,10 +8,12 @@
 import SwiftUI
 import StoreKit
 
+
 struct MoreView: View {
     @AppStorage("after7Display") var after7Display: Bool = false
     @AppStorage("appreviewed") var appreviewed: Bool = false
     @State var showSheet = false
+    @State var showPurchaseSheet = false
     @State var showNotAppreciatedSheet = false
     
     var body: some View {
@@ -20,6 +22,7 @@ struct MoreView: View {
                 if !appreviewed {
                     Button("⭐️앱 리뷰 남기기") {
                         showSheet.toggle()
+                        HapticManager.instance.impact(style: .medium)
                     }
                     .alert("급식시간에 만족하셨나요?", isPresented: $showSheet) {
                         Button("만족했어요") {

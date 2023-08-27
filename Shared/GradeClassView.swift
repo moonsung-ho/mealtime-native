@@ -78,6 +78,7 @@ struct GradeClassView: View {
                 }.onChange(of: selectedClass) { newValue in
                     UserDefaults.standard.set(String(selectedClass), forKey: "class")
                     alertPresent.toggle()
+                    HapticManager.instance.notification(type: .success)
                 }
             }
             .toast(isPresenting: $alertPresent) {

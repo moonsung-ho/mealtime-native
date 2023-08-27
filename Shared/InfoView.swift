@@ -19,10 +19,10 @@ struct InfoView: View {
     
     var body: some View {
         List {
-            Text("학교: \(schoolName ?? "등록해 주세요.")" )
-            Text("학년/반: \(grade ?? "절정되지 않은")학년 \(classN ?? "설정되지 않은")반" )
+            Text("\(schoolName ?? "학교가 설정되지 않았어요.")" )
+            Text("\(grade ?? "미설정")학년 \(classN ?? "미설정")반" )
             Text("알레르기: \(allergy ?? "없음")" )
-            Text("앱 버전: \(appVersion ?? "없음")" )
+            Text("앱 버전: \(appVersion ?? "앱 버전을 불러올 수 없어요.")" )
             Button("개발자에게 문의하기") {
                 UIApplication.shared.open(URL(string: "https://www.facebook.com/appmealtime")!)
             }.foregroundColor(Color.blue)
