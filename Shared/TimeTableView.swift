@@ -46,7 +46,6 @@ struct TimeTableView: View {
                     else {
                         Text(lesson)
                     }
-                    
                 }.onAppear {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyyMMdd"
