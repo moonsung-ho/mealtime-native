@@ -122,7 +122,7 @@ struct mealtimeApp: App {
                 .sheet(isPresented: $alertPresent) {
                     NavigationView {
                         VStack(alignment:.center){
-                            Text("교육청 나이스의 시스템 점검으로 인해\n급식시간의 모든 서비스가 작동하지 않아요.\n궁금한 점이 있다면 [개발자에게 문의](https://www.facebook.com/appmealtime)하거나\n[나이스](https://neis.go.kr)를 참고해 주세요.")
+                            Text("9월 4일은")
                                 .frame(alignment: .center).multilineTextAlignment(.center)
                                 .toolbar {
                                     ToolbarItem(placement: .navigationBarLeading) {
