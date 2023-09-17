@@ -104,6 +104,12 @@
 		CB638AB22A2311E80097796E /* notice.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = notice.json; sourceTree = "<group>"; };
 		CB7E5FAE28B2152000817C61 /* Alamofire-5.6.2 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "Alamofire-5.6.2"; path = "../../../Downloads/Alamofire-5.6.2"; sourceTree = "<group>"; };
 		CB9F740F903F7B9AF5B9CCFD /* Pods-mealtime (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mealtime (macOS).release.xcconfig"; path = "Target Support Files/Pods-mealtime (macOS)/Pods-mealtime (macOS).release.xcconfig"; sourceTree = "<group>"; };
+		CBA59A902AADC94B00F6E897 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = Library/Frameworks/Messages.framework; sourceTree = DEVELOPER_DIR; };
+		CBA59AA62AADC9F200F6E897 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CBA59AB22AADC9F200F6E897 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		CBA59AB52AADC9F200F6E897 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		CBA59AB72AADC9F300F6E897 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CBA59AB92AADC9F300F6E897 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBB3509D29EA9A4D006AB8A0 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		CBCB704428AF5DAA003DF9D6 /* mealtimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mealtimeApp.swift; sourceTree = "<group>"; };
 		CBCB704528AF5DAA003DF9D6 /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
@@ -236,8 +242,28 @@
 				CBFF9B222A46F1600010350B /* SwiftyJSON.framework */,
 				987E9CAC0DF980BB92316EA2 /* Pods_mealtime__iOS_.framework */,
 				E8859D7D4135E38447547AF4 /* Pods_mealtime__macOS_.framework */,
+				CBA59A902AADC94B00F6E897 /* Messages.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CBA59AA52AADC9F000F6E897 /* geupsik.message */ = {
+			isa = PBXGroup;
+			children = (
+				CBA59AA62AADC9F200F6E897 /* Assets.xcassets */,
+			);
+			path = geupsik.message;
+			sourceTree = "<group>";
+		};
+		CBA59AB12AADC9F200F6E897 /* geupsik.message MessagesExtension */ = {
+			isa = PBXGroup;
+			children = (
+				CBA59AB22AADC9F200F6E897 /* MessagesViewController.swift */,
+				CBA59AB42AADC9F200F6E897 /* MainInterface.storyboard */,
+				CBA59AB72AADC9F300F6E897 /* Assets.xcassets */,
+				CBA59AB92AADC9F300F6E897 /* Info.plist */,
+			);
+			path = "geupsik.message MessagesExtension";
 			sourceTree = "<group>";
 		};
 		CBCB703E28AF5DAA003DF9D6 = {
@@ -251,6 +277,8 @@
 				CBCB705B28AF5DB0003DF9D6 /* Tests iOS */,
 				CBCB706728AF5DB0003DF9D6 /* Tests macOS */,
 				CBFF9B0D2A46ED620010350B /* mealtimeAppclip */,
+				CBA59AA52AADC9F000F6E897 /* geupsik.message */,
+				CBA59AB12AADC9F200F6E897 /* geupsik.message MessagesExtension */,
 				CBCB704C28AF5DB0003DF9D6 /* Products */,
 				E4F47C9A99BF20B75E45E359 /* Pods */,
 				6AF858BEDFC4A8BD00300F74 /* Frameworks */,
@@ -474,7 +502,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					CBCB704A28AF5DB0003DF9D6 = {
@@ -734,6 +762,17 @@
 			targetProxy = CBFF9B192A46ED640010350B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CBA59AB42AADC9F200F6E897 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBA59AB52AADC9F200F6E897 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CBCB707228AF5DB0003DF9D6 /* Debug */ = {

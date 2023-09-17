@@ -16,8 +16,6 @@ struct mealtimeApp: App {
     @State private var selection = 1
     @AppStorage("_isFirstLaunching") var isFirstLaunch: Bool = true
     @State private var settingsPresented = false
-    @State var alertPresent = false
-    @State var alertBody = ""
 //    @State private var isFirstLaunch = true
     @AppStorage("needToDisplaySchoolSettingsModal") var needToDisplaySchoolSettingsModal: Bool = false
     let Haptic = HapticManager.instance
@@ -25,19 +23,16 @@ struct mealtimeApp: App {
     var body: some Scene {
         WindowGroup {
             TabView(selection: $selection) {
-                MealView().tabItem { Image(systemName: "fork.knife");Text("급식") }.tag(1)
-                TimeTableView().tabItem { Image(systemName: "calendar");Text("시간표") }.tag(2)
-                MoreView().tabItem { Image(systemName: "ellipsis.circle.fill");Text("더보기")}.tag(3)
+                MealView().navigationViewStyle(StackNavigationViewStyle()).tabItem { Image(systemName: "fork.knife");Text("급식") }.tag(1)
+                TimeTableView().navigationViewStyle(StackNavigationViewStyle()).tabItem { Image(systemName: "calendar");Text("시간표") }.tag(2)
+                MoreView().navigationViewStyle(StackNavigationViewStyle()).tabItem { Image(systemName: "ellipsis.circle.fill");Text("더보기")}.tag(3)
             }
             .accentColor(.yellow)
             .onAppear {
                 UITabBar.appearance().backgroundColor = UIColor.systemBackground
-                neisIsShit()
             }
             .onChange(of: selection) {_ in
-                //Haptic.notification(type: .success)
                 Haptic.impact(style: .rigid)
-                print("haptic")
             }
             .sheet(isPresented: $isFirstLaunch) {
                     VStack {
@@ -52,13 +47,6 @@ struct mealtimeApp: App {
                                         Text("자신이 다니는 학교의 오늘과 내일,\n심지어 2주 후 급식도 확인할 수 있어요.").font(Font.subheadline).foregroundColor(Color.gray)
                                     }.frame(maxWidth: .infinity, alignment: .leading)
                                 }.padding(.horizontal, 35).padding(.top, 20)
-//                                HStack{
-//                                    Image(systemName: "").resizable().scaledToFit().frame(width: 40, height: 40).padding(5)
-//                                    VStack(alignment: .leading){
-//                                        Text("시간표도 조회할 수 있어요.").font(Font.subheadline.bold())
-//                                        Text("자신이 소속된 반의 오늘과 내일 시간표를 확인할 수 있어요.").font(Font.subheadline).foregroundColor(Color.gray)
-//                                    }
-//                                }.padding(.horizontal, 40).padding(.top, 25)
                                 HStack(){
                                     Image(systemName: "calendar").resizable().scaledToFit().frame(width: 40, height: 40).padding(5)
                                     VStack(alignment: .leading){
@@ -97,57 +85,9 @@ struct mealtimeApp: App {
                             .cornerRadius(15)
                         }
                         .frame(alignment: .bottom)
-//                        .padding(.top, 20)
                     }.padding(.bottom, 30).padding(.top, 50).interactiveDismissDisabled(true)
-                }
-                .interactiveDismissDisabled(true)
-//                .toast(isPresenting: $alertPresent, duration: 10, tapToDismiss: true) {
-//                    AlertToast(displayMode: .banner(.pop), type: .error(Color.red), title: "공지사항이 있어요.", subTitle: alertBody)
-//                }
-//                .sheet(isPresented: $settingsPresented) {
-//                    NavigationView {
-//                        SchoolSettingsView()
-//                            .toolbar {
-//                            ToolbarItem(placement: .navigationBarLeading) {
-//                                VStack(alignment: .leading) {
-//                                    Text("학교 설정하기").font(.title2).bold()
-//                                    Text("다니는 학교를 검색하고 선택해 주세요.").font(Font.footnote).foregroundColor(Color(UIColor.secondaryLabel))
-//                                }
-//                            }
-//                        }
-//                    }.padding(.top, 10).interactiveDismissDisabled(true)
-//                        .onDisappear {
-//                        }
-//                }.interactiveDismissDisabled(true)
-                .sheet(isPresented: $alertPresent) {
-                    NavigationView {
-                        VStack(alignment:.center){
-                            Text("9월 4일은")
-                                .frame(alignment: .center).multilineTextAlignment(.center)
-                                .toolbar {
-                                    ToolbarItem(placement: .navigationBarLeading) {
-                                        VStack(alignment: .leading) {
-                                            Text("⚠️공지사항").font(.title).bold()
-                                        }
-                                    }
-                                }
-                        }
-                    }.padding(.top, 10) .presentationDetents([.fraction(0.4)])
-                }
+                }.interactiveDismissDisabled(true)
             }
-    }
-    
-    func neisIsShit() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        let startDate = dateFormatter.date(from: "2023-06-15T18:00:00+0900")
-        let endDate = dateFormatter.date(from: "2023-06-20T23:59:59+0900")
-        if Date().compare(startDate!) == .orderedDescending {
-            if Date().compare(endDate!) == .orderedAscending {
-                alertPresent.toggle()
-            }
-        }
     }
     
     func schemeTransform(userInterfaceStyle:UIUserInterfaceStyle) -> ColorScheme {

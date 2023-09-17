@@ -56,7 +56,6 @@ struct MoreView: View {
                 }
                 Toggle("오후 8시 이후 내일 급식/시간표 표시", isOn: $after7Display)
             }.navigationBarTitle("더보기").navigationBarTitleDisplayMode(.large)
-            AdBannerView()
         }
     }
 }
