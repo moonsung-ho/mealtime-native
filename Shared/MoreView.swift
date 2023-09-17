@@ -11,20 +11,22 @@ import StoreKit
 
 struct MoreView: View {
     @AppStorage("after7Display") var after7Display: Bool = false
-    @AppStorage("appreviewed") var appreviewed: Bool = false
-    @State var showSheet = false
-    @State var showPurchaseSheet = false
+//    @AppStorage("appreviewed") var appreviewed: Bool = false
+    @State var appreviewed = false
+    @State var showReviewSheet = false
+    @State var showContactSheet = false
     @State var showNotAppreciatedSheet = false
     
     var body: some View {
         NavigationView {
             List {
                 if !appreviewed {
-                    Button("⭐️앱 리뷰 남기기") {
-                        showSheet.toggle()
+                    Button("⭐️ 앱 리뷰 남기기") {
+                        showReviewSheet.toggle()
                         HapticManager.instance.impact(style: .medium)
                     }
-                    .alert("급식시간에 만족하셨나요?", isPresented: $showSheet) {
+                    .foregroundStyle(.foreground)
+                    .alert("급식시간에 만족하셨나요?", isPresented: $showReviewSheet) {
                         Button("만족했어요") {
                             SKStoreReviewController.requestReview()
                             appreviewed = true
@@ -53,6 +55,16 @@ struct MoreView: View {
                 }
                 NavigationLink("학년/반 설정") {
                     GradeClassView().navigationBarTitle("학년/반 설정")
+                }
+                Button("문의하기") {
+                    showContactSheet.toggle()
+                }
+                .foregroundStyle(.foreground)
+                .alert("문의하기", isPresented: $showContactSheet) {
+                    Button("메일") {UIApplication.shared.open(URL(string: "mailto:sungho.moon@aol.com")!)}
+                    Button("Facebook") {UIApplication.shared.open(URL(string: "https://www.facebook.com/appmealtime")!)}
+                    Button("GitHub") {UIApplication.shared.open(URL(string: "https://github.com/moonsung-ho/mealtime-native")!)}
+                    Button("그만하기", role: .cancel) {}
                 }
                 Toggle("오후 8시 이후 내일 급식/시간표 표시", isOn: $after7Display)
             }.navigationBarTitle("더보기").navigationBarTitleDisplayMode(.large)
