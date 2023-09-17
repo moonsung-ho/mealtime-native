@@ -905,6 +905,7 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = S6Q48J2C6X;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S6Q48J2C6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "mealtime--iOS--Info.plist";
@@ -925,6 +926,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sungho0205.geupsik;
 				PRODUCT_NAME = mealtime;
 				PROVISIONING_PROFILE_SPECIFIER = dev_geupsik;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = dev_geupsik;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -945,6 +947,7 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = S6Q48J2C6X;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S6Q48J2C6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "mealtime--iOS--Info.plist";
@@ -965,6 +968,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sungho0205.geupsik;
 				PRODUCT_NAME = mealtime;
 				PROVISIONING_PROFILE_SPECIFIER = dist_geupsik;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = dist_geupsik;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
