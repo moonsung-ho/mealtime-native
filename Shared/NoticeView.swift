@@ -22,6 +22,9 @@ struct NoticeView: View {
         .onAppear {
             sendGetRequest()
         }
+        .refreshable {
+            sendGetRequest()
+        }
     }
     
     func sendGetRequest() {
