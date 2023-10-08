@@ -538,10 +538,10 @@
 			);
 			mainGroup = CBCB703E28AF5DAA003DF9D6;
 			packageReferences = (
-				CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange.git" */,
-				CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift.git" */,
+				CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */,
+				CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */,
 				CBFF9B592A46F80D0010350B /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
-				CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast#swift-package-manager" */,
+				CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = CBCB704C28AF5DB0003DF9D6 /* Products */;
 			projectDirPath = "";
@@ -905,11 +905,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "mealtime (iOS).entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = S6Q48J2C6X;
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S6Q48J2C6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "mealtime--iOS--Info.plist";
@@ -929,8 +928,7 @@
 				MARKETING_VERSION = 6.3.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sungho0205.geupsik;
 				PRODUCT_NAME = mealtime;
-				PROVISIONING_PROFILE_SPECIFIER = dev_geupsik;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = dev_geupsik;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -947,11 +945,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "mealtime (iOS).entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = S6Q48J2C6X;
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S6Q48J2C6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "mealtime--iOS--Info.plist";
@@ -971,8 +968,7 @@
 				MARKETING_VERSION = 6.3.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sungho0205.geupsik;
 				PRODUCT_NAME = mealtime;
-				PROVISIONING_PROFILE_SPECIFIER = dist_geupsik;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = dist_geupsik;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -988,11 +984,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = R6Z7QV6C3F;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -1004,6 +1002,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "moonsung-ho.mealtime";
 				PRODUCT_NAME = mealtime;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1017,13 +1016,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=macosx*]" = S6Q48J2C6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -1036,7 +1035,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "moonsung-ho.mealtime";
 				PRODUCT_NAME = mealtime;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = dist_geupsik;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1172,12 +1170,10 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = mealtimeAppclip/mealtimeAppclip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_ASSET_PATHS = "Shared/Assets.xcassets mealtimeAppclip/Preview\\ Content";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S6Q48J2C6X;
+				DEVELOPMENT_TEAM = S6Q48J2C6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mealtimeAppclip/Info.plist;
@@ -1198,7 +1194,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sungho0205.geupsik.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = dist_geupsik_clip;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1267,7 +1262,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift.git" */ = {
+		CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/baekteun/NeiSwift.git";
 			requirement = {
@@ -1275,7 +1270,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange.git" */ = {
+		CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Tunous/DebouncedOnChange.git";
 			requirement = {
@@ -1291,7 +1286,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast#swift-package-manager" */ = {
+		CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elai950/AlertToast#swift-package-manager";
 			requirement = {
@@ -1304,22 +1299,22 @@
 /* Begin XCSwiftPackageProductDependency section */
 		CB638AB62A23BC090097796E /* AsyncNeiSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift.git" */;
+			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */;
 			productName = AsyncNeiSwift;
 		};
 		CB638AB82A23BC090097796E /* CombineNeiSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift.git" */;
+			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */;
 			productName = CombineNeiSwift;
 		};
 		CB638ABA2A23BC090097796E /* NeiSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift.git" */;
+			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */;
 			productName = NeiSwift;
 		};
 		CBAC8CFC2A19F9A700EE1AD6 /* DebouncedOnChange */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange.git" */;
+			package = CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */;
 			productName = DebouncedOnChange;
 		};
 		CBFF9B5A2A46F80D0010350B /* SwiftyJSON */ = {
@@ -1334,17 +1329,17 @@
 		};
 		CBFF9B622A46F91B0010350B /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast#swift-package-manager" */;
+			package = CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
 		};
 		CBFF9B642A46F9240010350B /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast#swift-package-manager" */;
+			package = CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
 		};
 		CBFF9B662A46FB230010350B /* DebouncedOnChange */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange.git" */;
+			package = CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */;
 			productName = DebouncedOnChange;
 		};
 /* End XCSwiftPackageProductDependency section */

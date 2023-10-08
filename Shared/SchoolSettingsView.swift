@@ -88,6 +88,7 @@ struct SchoolSettingsView: View {
         }
         .onChange(of: schoolFilter){(value) in
             loading.toggle()
+            HapticManager.instance.selectionChanged()
             sendGetRequest(stringToSearch: searchString, region: schoolFilter)
         }
         .onChange(of: searchString, debounceTime: .milliseconds(400)) { (value) in

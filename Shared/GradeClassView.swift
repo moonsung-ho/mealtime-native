@@ -73,7 +73,7 @@ struct GradeClassView: View {
                 Picker(selection: $selectedClass, label: Text("반 선택하기")) {
                     if maxClass >= 1 {
                         ForEach(1...maxClass, id: \.self) { number in
-                            Text("\(number)").tag(number)
+                            Text("\(number)반").tag(number)
                         }
                     }
                 }.onChange(of: selectedClass) { newValue in

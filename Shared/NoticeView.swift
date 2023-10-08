@@ -14,10 +14,11 @@ struct NoticeView: View {
         List (notices, id: \.self) { notice in
             Section {
                 VStack(alignment: .leading){
-                    Text(notice.head).font(.headline)
-                    Text(notice.date).font(.caption)
-                }.padding(2)
+                    Text(notice.head).fontWeight(.semibold)
+                }
                 Text(notice.body).font(.body)
+            } header: {
+                Text(notice.date)
             }
         }
         .navigationTitle("공지사항")

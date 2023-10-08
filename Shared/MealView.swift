@@ -12,7 +12,7 @@ struct MealView: View {
     @State var fancyDate: String = ""
     @AppStorage("after7Display") var after7Display: Bool = false
     @AppStorage("needToDisplaySchoolSettingsModal") var needToDisplaySchoolSettingsModal: Bool = false
-    //    @State var needToDisplaySchoolSettingsModal: Bool = false
+    // @State var needToDisplaySchoolSettingsModal: Bool = false
     
     var body: some View {
         NavigationView {

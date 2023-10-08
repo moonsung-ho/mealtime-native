@@ -10,8 +10,6 @@ import StoreKit
 
 
 struct MoreView: View {
-    @AppStorage("after7Display") var after7Display: Bool = false
-//    @AppStorage("appreviewed") var appreviewed: Bool = false
     @State var appreviewed = false
     @State var showReviewSheet = false
     @State var showContactSheet = false
@@ -21,9 +19,15 @@ struct MoreView: View {
         NavigationView {
             List {
                 if !appreviewed {
-                    Button("⭐️ 앱 리뷰 남기기") {
+                    Button {
                         showReviewSheet.toggle()
                         HapticManager.instance.impact(style: .medium)
+                    } label: {
+                        Label {
+                            Text("앱 리뷰 남기기")
+                        } icon: {
+                            Image(systemName: "star.circle").foregroundStyle(.yellow)
+                        }
                     }
                     .foregroundStyle(.foreground)
                     .alert("급식시간에 만족하셨나요?", isPresented: $showReviewSheet) {
@@ -41,23 +45,32 @@ struct MoreView: View {
                         Button("그만하기", role: .cancel) {}
                     }
                 }
-                NavigationLink("내 설정 확인하기") {
-                    InfoView().navigationBarTitle("내 설정")
+                NavigationLink {
+                    InfoView().navigationBarTitle("설정하기")
+                } label: {
+                    Label {
+                        Text("설정하기")
+                    } icon: {
+                        Image(systemName: "gearshape.circle").foregroundStyle(.blue)
+                    }
                 }
-                NavigationLink("공지사항") {
+                NavigationLink {
                     NoticeView()
+                } label: {
+                    Label {
+                        Text("공지사항")
+                    } icon: {
+                        Image(systemName: "bell.badge.circle").foregroundStyle(.red)
+                    }
                 }
-                NavigationLink("학교 설정") {
-                    SchoolSettingsView().navigationBarTitle("학교 설정")
-                }
-                NavigationLink("알레르기 설정") {
-                    AllergySettingsView().navigationBarTitle("알레르기 설정")
-                }
-                NavigationLink("학년/반 설정") {
-                    GradeClassView().navigationBarTitle("학년/반 설정")
-                }
-                Button("문의하기") {
+                Button {
                     showContactSheet.toggle()
+                } label: {
+                    Label {
+                        Text("문의하기")
+                    } icon: {
+                        Image(systemName: "questionmark.circle").foregroundStyle(.orange)
+                    }
                 }
                 .foregroundStyle(.foreground)
                 .alert("문의하기", isPresented: $showContactSheet) {
@@ -66,7 +79,6 @@ struct MoreView: View {
                     Button("GitHub") {UIApplication.shared.open(URL(string: "https://github.com/moonsung-ho/mealtime-native")!)}
                     Button("그만하기", role: .cancel) {}
                 }
-                Toggle("오후 8시 이후 내일 급식/시간표 표시", isOn: $after7Display)
             }.navigationBarTitle("더보기").navigationBarTitleDisplayMode(.large)
         }
     }
