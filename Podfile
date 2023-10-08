@@ -7,6 +7,7 @@ target 'mealtime (iOS)' do
 pod 'SwiftyJSON', '~> 4.0'
 pod 'Google-Mobile-Ads-SDK'
 pod 'AlertToast'
+pod 'AppCenter'
   # Pods for mealtime (iOS)
 
 end
@@ -15,6 +16,7 @@ target 'mealtime (macOS)' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 pod 'SwiftyJSON', '~> 4.0'
+pod 'AppCenter'
   # Pods for mealtime (macOS)
 
 end

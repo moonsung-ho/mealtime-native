@@ -1,5 +1,13 @@
 PODS:
   - AlertToast (1.3.9)
+  - AppCenter (5.0.4):
+    - AppCenter/Analytics (= 5.0.4)
+    - AppCenter/Crashes (= 5.0.4)
+  - AppCenter/Analytics (5.0.4):
+    - AppCenter/Core
+  - AppCenter/Core (5.0.4)
+  - AppCenter/Crashes (5.0.4):
+    - AppCenter/Core
   - Google-Mobile-Ads-SDK (10.1.0):
     - GoogleAppMeasurement (< 11.0, >= 7.0)
     - GoogleUserMessagingPlatform (>= 1.1)
@@ -51,12 +59,14 @@ PODS:
 
 DEPENDENCIES:
   - AlertToast
+  - AppCenter
   - Google-Mobile-Ads-SDK
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
     - AlertToast
+    - AppCenter
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleUserMessagingPlatform
@@ -67,6 +77,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AlertToast: e8db15da727beff75500bcf33a78cd617f408fa1
+  AppCenter: 85c92db0759d2792a65eb61d6842d2e86611a49a
   Google-Mobile-Ads-SDK: 894be2e3e3e8281004bda14381f9af7ad73eeffd
   GoogleAppMeasurement: 686b48c3c895f3c55c70719041913d5d150b74f6
   GoogleUserMessagingPlatform: 5f8b30daf181805317b6b985bb51c1ff3beca054
@@ -75,6 +86,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 7e297ea374e8cdc7bbe4c76ccdc24ab98c105fe2
+PODFILE CHECKSUM: 27a4d71ca78984aa8f31ed25f7d957cb237adfca
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.13.0

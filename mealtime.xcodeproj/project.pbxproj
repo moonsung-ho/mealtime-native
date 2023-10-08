@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		167477BD567F6602463DC73A /* Pods_mealtime__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8859D7D4135E38447547AF4 /* Pods_mealtime__macOS_.framework */; };
 		8D7B5E56725D8429DB39C774 /* Pods_mealtime__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 987E9CAC0DF980BB92316EA2 /* Pods_mealtime__iOS_.framework */; };
+		932AE401816D453DB1112A00 /* Pods_mealtime__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFF9B3B2A46F7770010350B /* Pods_mealtime__iOS_.framework */; };
 		CB0F2DED2A9B045900B33A86 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0F2DEC2A9B045900B33A86 /* HapticManager.swift */; };
 		CB0F2DEE2A9B045900B33A86 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0F2DEC2A9B045900B33A86 /* HapticManager.swift */; };
 		CB61A62B2A63FEAC008A27E9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB61A62A2A63FEAC008A27E9 /* StoreKit.framework */; };
@@ -56,6 +57,7 @@
 		CBFF9B652A46F9240010350B /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = CBFF9B642A46F9240010350B /* AlertToast */; };
 		CBFF9B672A46FB230010350B /* DebouncedOnChange in Frameworks */ = {isa = PBXBuildFile; productRef = CBFF9B662A46FB230010350B /* DebouncedOnChange */; };
 		CBFF9B6B2A4806920010350B /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF9B6A2A4806920010350B /* NoticeView.swift */; };
+		DB7FDB549925D56776C45885 /* Pods_mealtime__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFF9B3C2A46F7770010350B /* Pods_mealtime__macOS_.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +181,7 @@
 				CBAC8CFD2A19F9A700EE1AD6 /* DebouncedOnChange in Frameworks */,
 				CB638ABB2A23BC090097796E /* NeiSwift in Frameworks */,
 				CB638AB72A23BC090097796E /* AsyncNeiSwift in Frameworks */,
+				932AE401816D453DB1112A00 /* Pods_mealtime__iOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				167477BD567F6602463DC73A /* Pods_mealtime__macOS_.framework in Frameworks */,
+				DB7FDB549925D56776C45885 /* Pods_mealtime__macOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,10 +538,10 @@
 			);
 			mainGroup = CBCB703E28AF5DAA003DF9D6;
 			packageReferences = (
-				CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */,
-				CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */,
+				CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange.git" */,
+				CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift.git" */,
 				CBFF9B592A46F80D0010350B /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
-				CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast" */,
+				CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast#swift-package-manager" */,
 			);
 			productRefGroup = CBCB704C28AF5DB0003DF9D6 /* Products */;
 			projectDirPath = "";
@@ -903,7 +907,7 @@
 				CODE_SIGN_ENTITLEMENTS = "mealtime (iOS).entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = S6Q48J2C6X;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S6Q48J2C6X;
 				ENABLE_PREVIEWS = YES;
@@ -922,7 +926,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.3.4;
+				MARKETING_VERSION = 6.3.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sungho0205.geupsik;
 				PRODUCT_NAME = mealtime;
 				PROVISIONING_PROFILE_SPECIFIER = dev_geupsik;
@@ -945,7 +949,7 @@
 				CODE_SIGN_ENTITLEMENTS = "mealtime (iOS).entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = S6Q48J2C6X;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S6Q48J2C6X;
 				ENABLE_PREVIEWS = YES;
@@ -964,7 +968,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.3.4;
+				MARKETING_VERSION = 6.3.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sungho0205.geupsik;
 				PRODUCT_NAME = mealtime;
 				PROVISIONING_PROFILE_SPECIFIER = dist_geupsik;
@@ -1013,11 +1017,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = R6Z7QV6C3F;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = S6Q48J2C6X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -1029,6 +1035,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "moonsung-ho.mealtime";
 				PRODUCT_NAME = mealtime;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = dist_geupsik;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1123,7 +1131,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_ASSET_PATHS = "Shared/Assets.xcassets mealtimeAppclip/Preview\\ Content";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S6Q48J2C6X;
@@ -1138,12 +1146,12 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.3.4;
+				MARKETING_VERSION = 6.3.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sungho0205.geupsik.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1166,7 +1174,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_ASSET_PATHS = "Shared/Assets.xcassets mealtimeAppclip/Preview\\ Content";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S6Q48J2C6X;
@@ -1181,12 +1189,12 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.3.4;
+				MARKETING_VERSION = 6.3.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sungho0205.geupsik.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1259,7 +1267,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */ = {
+		CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/baekteun/NeiSwift.git";
 			requirement = {
@@ -1267,7 +1275,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */ = {
+		CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Tunous/DebouncedOnChange.git";
 			requirement = {
@@ -1283,7 +1291,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+		CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast#swift-package-manager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elai950/AlertToast#swift-package-manager";
 			requirement = {
@@ -1296,22 +1304,22 @@
 /* Begin XCSwiftPackageProductDependency section */
 		CB638AB62A23BC090097796E /* AsyncNeiSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */;
+			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift.git" */;
 			productName = AsyncNeiSwift;
 		};
 		CB638AB82A23BC090097796E /* CombineNeiSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */;
+			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift.git" */;
 			productName = CombineNeiSwift;
 		};
 		CB638ABA2A23BC090097796E /* NeiSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift" */;
+			package = CB638AB52A23BC090097796E /* XCRemoteSwiftPackageReference "NeiSwift.git" */;
 			productName = NeiSwift;
 		};
 		CBAC8CFC2A19F9A700EE1AD6 /* DebouncedOnChange */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */;
+			package = CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange.git" */;
 			productName = DebouncedOnChange;
 		};
 		CBFF9B5A2A46F80D0010350B /* SwiftyJSON */ = {
@@ -1326,17 +1334,17 @@
 		};
 		CBFF9B622A46F91B0010350B /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast" */;
+			package = CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast#swift-package-manager" */;
 			productName = AlertToast;
 		};
 		CBFF9B642A46F9240010350B /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast" */;
+			package = CBFF9B612A46F91B0010350B /* XCRemoteSwiftPackageReference "AlertToast#swift-package-manager" */;
 			productName = AlertToast;
 		};
 		CBFF9B662A46FB230010350B /* DebouncedOnChange */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange" */;
+			package = CBAC8CFB2A19F9A700EE1AD6 /* XCRemoteSwiftPackageReference "DebouncedOnChange.git" */;
 			productName = DebouncedOnChange;
 		};
 /* End XCSwiftPackageProductDependency section */

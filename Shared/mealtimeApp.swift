@@ -87,7 +87,7 @@ struct mealtimeApp: App {
                         .frame(alignment: .bottom)
                     }.padding(.bottom, 30).padding(.top, 50).interactiveDismissDisabled(true)
                 }.interactiveDismissDisabled(true)
-            }
+        }
     }
     
     func schemeTransform(userInterfaceStyle:UIUserInterfaceStyle) -> ColorScheme {

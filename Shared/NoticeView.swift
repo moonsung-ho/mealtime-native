@@ -12,11 +12,13 @@ struct NoticeView: View {
     @State var notices:[Notice] = [Notice(head: "불러오는 중이에요.", body: "", date: "")]
     var body: some View {
         List (notices, id: \.self) { notice in
-            VStack(alignment: .leading){
-                Text(notice.head).font(.headline)
-                Text(notice.date).font(.caption)
-            }.padding(2)
-            Text(notice.body).font(.body)
+            Section {
+                VStack(alignment: .leading){
+                    Text(notice.head).font(.headline)
+                    Text(notice.date).font(.caption)
+                }.padding(2)
+                Text(notice.body).font(.body)
+            }
         }
         .navigationTitle("공지사항")
         .onAppear {
