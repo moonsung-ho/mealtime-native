@@ -44,6 +44,11 @@ struct InfoView: View {
                                     Text("\(grade ?? "미설정")학년 \(classN ?? "미설정")반").foregroundStyle(.gray).fontWeight(.light)
                                 }
                             }
+                        } footer: {
+                            Text("앱 버전: \(appVersion ?? "앱 버전을 불러올 수 없어요.")" )
+                        }
+                        Section {
+                            Toggle("오후 8시 이후 내일 급식/시간표 표시", isOn: $after7Display)
                             NavigationLink {
                                 AllergySettingsView().navigationBarTitle("알레르기 설정")
                             } label: {
@@ -55,11 +60,6 @@ struct InfoView: View {
                                     Text("\(allergies[Int(allergy ?? "0")!] )").foregroundStyle(.gray).fontWeight(.light)
                                 }
                             }
-                        } footer: {
-                            Text("앱 버전: \(appVersion ?? "앱 버전을 불러올 수 없어요.")" )
-                        }
-                        Section {
-                            Toggle("오후 8시 이후 내일 급식/시간표 표시", isOn: $after7Display)
                         } header: {
                             Text("편의 기능")
                         }

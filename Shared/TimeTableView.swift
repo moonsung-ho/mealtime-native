@@ -135,16 +135,6 @@ struct TimeTableView: View {
 
             // 6. 데이터 처리
             let timeTableJSON = JSON(data)
-//            guard var time = timeTableJSON["misTimetable"][1]["row"][0]["DDISH_NM"].rawValue as? String else {
-//                if schoolCode == nil {
-//                    timeTable = ["학교를 등록해주세요."]
-//                } else{
-//                    timeTable = ["급식이 등록되지 않았어요."]
-//                }
-//                return
-//            }
-            //meal = meal.filter { !"0123456789. ".contains($0) }
-            //meal = meal.filter { !"()".contains($0) }
             for (_, lesson) in timeTableJSON["\(schoolForm)Timetable"][1]["row"].enumerated() {
                 timeTable.append("\(lesson.1["PERIO"].rawValue as! String): \(lesson.1["ITRT_CNTNT"].rawValue as! String)")
             }

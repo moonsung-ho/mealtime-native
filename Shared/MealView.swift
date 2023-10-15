@@ -4,8 +4,12 @@ import Foundation
 import AppTrackingTransparency
 
 struct MealView: View {
-    @State var meals: [String] = []
+    @State var lunch: [String] = []
+    @State var breakfast: [String] = []
+    @State var dinner: [String] = []
+    @State var mealCount: Int = 1
     @State var meal: String = ""
+    @State var calories: [String] = ["0", "0", "0"]
     @State private var selectedDate = Date()
     @State var loading: Bool = false
     @State var schoolName:String = ""
@@ -43,10 +47,40 @@ struct MealView: View {
                         .padding(.top, 20)
                         .padding(.bottom, 20)
                 }
-                List(meals, id: \.self) { meal in
-                    if meal.contains("!"){Text(meal.filter { !"!".contains($0) }).foregroundColor(Color.red)}
-                    else {
-                        Text(meal)
+                List {
+                    if mealCount >= 2 {
+                        Section {
+                            ForEach(breakfast, id:\.self) {meal in
+                                if meal.contains("!"){Text(meal.filter { !"!".contains($0) }).foregroundColor(Color.red)}
+                                else {
+                                    Text(meal)
+                                }
+                            }
+                        } header: {
+                            Text("아침 - \(calories[0])kcal")
+                        }
+                    }
+                    Section {
+                        ForEach(lunch, id:\.self) {meal in
+                            if meal.contains("!"){Text(meal.filter { !"!".contains($0) }).foregroundColor(Color.red)}
+                            else {
+                                Text(meal)
+                            }
+                        }
+                    } header: {
+                        Text("점심 - \(calories[1])kcal")
+                    }
+                    if mealCount >= 2 {
+                        Section {
+                            ForEach(dinner, id:\.self) {meal in
+                                if meal.contains("!"){Text(meal.filter { !"!".contains($0) }).foregroundColor(Color.red)}
+                                else {
+                                    Text(meal)
+                                }
+                            }
+                        } header: {
+                            Text("저녁 - \(calories[2])kcal")
+                        }
                     }
                 }
                 .onAppear {
@@ -96,7 +130,7 @@ struct MealView: View {
                     })
                 }.navigationBarTitle("급식")
                 .toolbar {
-                    ShareLink(item: "\(fancyDate)의 \(schoolName) 급식: \(meals.joined(separator: ", "))") {
+                    ShareLink(item: "\(fancyDate)의 \(schoolName) 급식: \(lunch.joined(separator: ", "))") {
                         Image(systemName: "square.and.arrow.up")
                     }.onAppear {
                         let Formatter = DateFormatter()
@@ -122,7 +156,7 @@ struct MealView: View {
             let allergy: String? = UserDefaults.standard.object(forKey: "allergy") as? String
             schoolName = UserDefaults.standard.object(forKey: "schoolName") as? String ?? ""
             // 1. URL 생성
-            let url = URL(string: "https://open.neis.go.kr/hub/mealServiceDietInfo?Type=json&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=\(officeCode ?? "")&SD_SCHUL_CODE=\(schoolCode ?? "")&MLSV_YMD=\(formattedDate)&KEY=a9a5367947564a1aa13e46ba545de634&MMEAL_SC_CODE=2")!
+            let url = URL(string: "https://open.neis.go.kr/hub/mealServiceDietInfo?Type=json&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=\(officeCode ?? "")&SD_SCHUL_CODE=\(schoolCode ?? "")&MLSV_YMD=\(formattedDate)&KEY=a9a5367947564a1aa13e46ba545de634")!
             
             // 2. URL Request 생성
             var request = URLRequest(url: url)
@@ -135,44 +169,139 @@ struct MealView: View {
             let task = session.dataTask(with: request) { data, response, error in
                 // 5. 응답 처리
                 if error != nil {
-                    meals = ["인터넷 연결을 확인해 보세요."]
+                    lunch = ["인터넷 연결을 확인해 보세요."]
                     HapticManager.instance.notification(type: .error)
                     return
                 }
                 
                 guard let response = response as? HTTPURLResponse,
                       (200..<300).contains(response.statusCode) else {
-                    meals = ["인터넷 연결을 확인해 보세요."]
+                    lunch = ["인터넷 연결을 확인해 보세요."]
                     return
                 }
                 
                 guard let data = data else {
-                    meals = ["문제가 발생했어요. 앱을 재실행해 보세요."]
+                    lunch = ["문제가 발생했어요. 앱을 재실행해 보세요."]
                     return
                 }
                 
                 // 6. 데이터 처리
                 let mealJSON = JSON(data)
-                guard let meal = mealJSON["mealServiceDietInfo"][1]["row"][0]["DDISH_NM"].rawValue as? String else {
-                    if schoolCode == nil {
-                        meals = ["학교를 등록하면 급식을 볼 수 있어요."]
-                    } else {
-                        meals = ["급식이 등록되지 않았어요."]
+                
+                mealCount = (mealJSON["mealServiceDietInfo"][0]["head"][0]["list_total_count"].intValue)
+                
+                if mealCount > 1 {
+                    // 아침
+                    guard let meal = mealJSON["mealServiceDietInfo"][1]["row"][0]["DDISH_NM"].rawValue as? String else {
+                        if schoolCode == nil {
+                            breakfast = ["학교를 등록하면 급식을 볼 수 있어요."]
+                        } else {
+                            breakfast = ["급식이 등록되지 않았어요."]
+                            calories = ["0", "0", "0"]
+                        }
+                        return
                     }
-                    return
-                }
-                //meal = meal.filter { !"0123456789. ".contains($0) }
-                //meal = meal.filter { !"()".contains($0) }
-                meals = meal.components(separatedBy: "<br/>")
-                for (index, meal) in meals.enumerated() {
-                    if meal.split(separator: " ").count == 2 {
-                        let separatedMeal = meal.split(separator: " ")[1].filter { !"()".contains($0) }
-                        let spmeal = separatedMeal.split(separator: ".")
-                        let allergyAlert = (allergy ?? "")
-                        meals[index] = meal.filter { !"0123456789.()".contains($0) }
-                        for allergies in spmeal{
-                            if allergies == allergyAlert{
-                                meals[index] = "!\(meals[index])"
+                    calories[0] = (mealJSON["mealServiceDietInfo"][1]["row"][0]["CAL_INFO"].rawValue as? String ?? "0").filter { !" Kcal".contains($0) }
+                    print(calories[0])
+                    breakfast = meal.components(separatedBy: "<br/>")
+                    print("아침")
+                    print(breakfast)
+                    // 점심
+                    guard let meal = mealJSON["mealServiceDietInfo"][1]["row"][1]["DDISH_NM"].rawValue as? String else {
+                        if schoolCode == nil {
+                            lunch = ["학교를 등록하면 급식을 볼 수 있어요."]
+                        } else {
+                            lunch = ["급식이 등록되지 않았어요."]
+                            calories = ["0", "0", "0"]
+                        }
+                        return
+                    }
+                    calories[1] = (mealJSON["mealServiceDietInfo"][1]["row"][1]["CAL_INFO"].rawValue as? String ?? "0").filter { !" Kcal".contains($0) }
+                    lunch = meal.components(separatedBy: "<br/>")
+                    print("점심")
+                    print(lunch)
+                    // 저녁
+                    guard let meal = mealJSON["mealServiceDietInfo"][1]["row"][2]["DDISH_NM"].rawValue as? String else {
+                        if schoolCode == nil {
+                            dinner = ["학교를 등록하면 급식을 볼 수 있어요."]
+                        } else {
+                            dinner = ["급식이 등록되지 않았어요."]
+                            calories = ["0", "0", "0"]
+                        }
+                        return
+                    }
+                    calories[2] = (mealJSON["mealServiceDietInfo"][1]["row"][2]["CAL_INFO"].rawValue as? String ?? "0").filter { !" Kcal".contains($0) }
+                    dinner = meal.components(separatedBy: "<br/>")
+                    print("저녁")
+                    print(dinner)
+                    
+                    for (index, meal) in breakfast.enumerated() {
+                        if meal.split(separator: " ").count == 2 {
+                            let separatedMeal = meal.split(separator: " ")[1].filter { !"()".contains($0) }
+                            let spmeal = separatedMeal.split(separator: ".")
+                            let allergyAlert = (allergy ?? "")
+                            breakfast[index] = meal.filter { !"0123456789.()".contains($0) }
+                            for allergies in spmeal{
+                                if allergies == allergyAlert{
+                                    breakfast[index] = "!\(breakfast[index])"
+                                }
+                            }
+                        }
+                    }
+                    
+                    for (index, meal) in lunch.enumerated() {
+                        if meal.split(separator: " ").count == 2 {
+                            let separatedMeal = meal.split(separator: " ")[1].filter { !"()".contains($0) }
+                            let spmeal = separatedMeal.split(separator: ".")
+                            let allergyAlert = (allergy ?? "")
+                            lunch[index] = meal.filter { !"0123456789.()".contains($0) }
+                            for allergies in spmeal{
+                                if allergies == allergyAlert{
+                                    lunch[index] = "!\(lunch[index])"
+                                }
+                            }
+                        }
+                    }
+                    
+                    for (index, meal) in dinner.enumerated() {
+                        if meal.split(separator: " ").count == 2 {
+                            let separatedMeal = meal.split(separator: " ")[1].filter { !"()".contains($0) }
+                            let spmeal = separatedMeal.split(separator: ".")
+                            let allergyAlert = (allergy ?? "")
+                            dinner[index] = meal.filter { !"0123456789.()".contains($0) }
+                            for allergies in spmeal{
+                                if allergies == allergyAlert{
+                                    dinner[index] = "!\(dinner[index])"
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    // 점심
+                    guard let meal = mealJSON["mealServiceDietInfo"][1]["row"][0]["DDISH_NM"].rawValue as? String else {
+                        if schoolCode == nil {
+                            lunch = ["학교를 등록하면 급식을 볼 수 있어요."]
+                        } else {
+                            lunch = ["급식이 등록되지 않았어요."]
+                            calories = ["0", "0", "0"]
+                        }
+                        return
+                    }
+                    lunch = meal.components(separatedBy: "<br/>")
+                    print("점심")
+                    print(lunch)
+                    calories[1] = (mealJSON["mealServiceDietInfo"][1]["row"][0]["CAL_INFO"].rawValue as? String ?? "0").filter { !" Kcal".contains($0) }
+                    
+                    for (index, meal) in lunch.enumerated() {
+                        if meal.split(separator: " ").count == 2 {
+                            let separatedMeal = meal.split(separator: " ")[1].filter { !"()".contains($0) }
+                            let spmeal = separatedMeal.split(separator: ".")
+                            let allergyAlert = (allergy ?? "")
+                            lunch[index] = meal.filter { !"0123456789.()".contains($0) }
+                            for allergies in spmeal{
+                                if allergies == allergyAlert{
+                                    lunch[index] = "!\(lunch[index])"
+                                }
                             }
                         }
                     }
